@@ -1,0 +1,20 @@
+{
+  "name": "fusionmetrics-plugins",
+  "interface": {
+    "displayName": "Fusionmetrics"
+  },
+  "plugins": [
+    {
+      "name": "fusionmetrics",
+      "source": {
+        "source": "local",
+        "path": "./plugins/fusionmetrics"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

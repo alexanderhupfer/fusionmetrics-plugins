@@ -1,0 +1,48 @@
+{
+  "name": "fusionmetrics",
+  "version": "0.1.0",
+  "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics.",
+  "author": {
+    "name": "Fusionmetrics",
+    "email": "alex@fusionmetrics.com",
+    "url": "https://fusionmetrics.com"
+  },
+  "homepage": "https://fusionmetrics.com/agent-setup",
+  "repository": "https://github.com/alexanderhupfer/fusionmetrics-plugins",
+  "license": "MIT",
+  "keywords": [
+    "shopify",
+    "revenue",
+    "setup"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Fusionmetrics",
+    "shortDescription": "Set up Shopify revenue imports",
+    "developerName": "Fusionmetrics",
+    "category": "Productivity",
+    "longDescription": "Connect your Fusionmetrics Organization to set up Shopify Partner API revenue imports, inspect setup progress, and retry failed imports. Optionally prepare Merchant contact capture in an app based on Shopify's official React Router template. Credentials are entered in your browser. Setup requests read and write permissions; analytics is a separate connection. Contact capture requires access to your local app repository and separate deployment. A successful local check does not establish live contact receipt. A Fusionmetrics account, Organization administrator access for setup writes, and an eligible service plan are required.",
+    "capabilities": [
+      "Read setup status",
+      "Configure revenue imports",
+      "Prepare optional contact capture"
+    ],
+    "websiteURL": "https://fusionmetrics.com/agent-setup",
+    "supportURL": "https://github.com/alexanderhupfer/fusionmetrics-plugins/blob/main/plugins/fusionmetrics/SUPPORT.md",
+    "privacyPolicyURL": "https://fusionmetrics.com/privacy",
+    "termsOfServiceURL": "https://fusionmetrics.com/terms",
+    "defaultPrompt": [
+      "Set up this Shopify app with Fusionmetrics.",
+      "Check my Fusionmetrics setup progress."
+    ],
+    "brandColor": "#036C41",
+    "composerIcon": "./assets/logo.svg",
+    "logo": "./assets/logo.svg"
+  },
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup/SKILL.md"
+    }
+  }
+}

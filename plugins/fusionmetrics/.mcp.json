@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "fusionmetrics": {
+      "type": "http",
+      "url": "https://fusionmetrics.com/api/mcp"
+    }
+  }
+}

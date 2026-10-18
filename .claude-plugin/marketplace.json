@@ -1,0 +1,14 @@
+{
+  "name": "fusionmetrics-plugins",
+  "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics.",
+  "owner": {
+    "name": "Fusionmetrics"
+  },
+  "plugins": [
+    {
+      "name": "fusionmetrics",
+      "source": "./plugins/fusionmetrics",
+      "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics."
+    }
+  ]
+}

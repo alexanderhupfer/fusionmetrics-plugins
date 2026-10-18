@@ -1,0 +1,20 @@
+{
+  "name": "fusionmetrics",
+  "version": "0.1.0",
+  "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics.",
+  "author": {
+    "name": "Fusionmetrics",
+    "email": "alex@fusionmetrics.com",
+    "url": "https://fusionmetrics.com"
+  },
+  "homepage": "https://fusionmetrics.com/agent-setup",
+  "repository": "https://github.com/alexanderhupfer/fusionmetrics-plugins",
+  "license": "MIT",
+  "keywords": [
+    "shopify",
+    "revenue",
+    "setup"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.claude-mcp.json"
+}

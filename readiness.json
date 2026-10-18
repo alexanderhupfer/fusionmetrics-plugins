@@ -1,0 +1,15 @@
+{
+  "status": "preparation-only",
+  "gates": [
+    { "id": "publisher-and-portal-access", "status": "pending", "evidence": "" },
+    { "id": "hosted-service-terms-and-privacy-review", "status": "pending", "evidence": "" },
+    { "id": "production-client-oauth-and-scopes", "status": "pending", "evidence": "" },
+    { "id": "organization-permissions-and-revocation", "status": "pending", "evidence": "" },
+    { "id": "tool-titles-and-annotations", "status": "pending", "evidence": "" },
+    { "id": "reviewer-account-and-seeded-data", "status": "pending", "evidence": "" },
+    { "id": "five-positive-three-negative-live-tests", "status": "pending", "evidence": "" },
+    { "id": "review-demo-recording", "status": "pending", "evidence": "" },
+    { "id": "scanner-reachability-and-domain-verification", "status": "pending", "evidence": "" },
+    { "id": "claude-portal-validation-and-connector-pairing", "status": "pending", "evidence": "" }
+  ]
+}
