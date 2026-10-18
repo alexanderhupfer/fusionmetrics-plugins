@@ -9,7 +9,7 @@
     {
       "id": "hosted-service-terms-and-privacy-review",
       "status": "pending",
-      "evidence": "2026-10-18: Approved service pages and corrected JWT-revocation wording deployed through PR #155 at 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Public terms/privacy checks passed. Final publisher legal attestations remain unperformed, as requested before submission."
+      "evidence": "2026-10-18: Approved service pages and corrected JWT-revocation wording deployed through PR #155 at 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Public terms/privacy checks passed. Exact OpenAI publisher declarations are prepared, awaiting confirmation before acceptance. Claude\u2019s declaration about no execution outside declared MCP servers requires clarification for the disclosed local validator/build workflow; no unsupported legal declaration was checked."
     },
     {
       "id": "production-client-oauth-and-scopes",
@@ -29,7 +29,7 @@
     {
       "id": "reviewer-account-and-seeded-data",
       "status": "verified",
-      "evidence": "2026-10-18: Existing iPhone reviewer has password-only access, one fictional Organization, administrator/lifetime access and preserved revenue fixtures. The isolated Shopify Partner account, test App and sample development store are connected; initial and Claude-initiated discovery/configuration/import completed. Synthetic BigQuery imports completed with 20 views, six clicks and four installs. Capture credentials and local official-template preparation are recorded, waiting for receipt. These resources exercise all 15 MCP tools, including the expected completed-import retry rejection. Broader provider-browser and deployed-capture coverage is tracked separately; Audience production data is not shared."
+      "evidence": "2026-10-18: Existing iPhone reviewer has password-only access, one fictional Organization, administrator/lifetime access and preserved revenue fixtures. The isolated Shopify Partner account, test App and sample development store are connected; initial and Claude-initiated discovery/configuration/import completed. Synthetic BigQuery imports completed with 20 views, six clicks and four installs. Capture credentials and local official-template checks passed; a separate deployed App Bridge harness produced a real contact_received receipt with usableContact:true. These resources exercise all 15 MCP tools, including the expected completed-import retry rejection. Broader provider-browser coverage is tracked separately; Audience production data is not shared."
     },
     {
       "id": "five-positive-three-negative-live-tests",
@@ -64,7 +64,7 @@
     {
       "id": "listing-and-ga4-browser-workflows",
       "status": "pending",
-      "evidence": "2026-10-18: Private Audience-Push draft subtitle was saved/reloaded/restored exactly without publication. Reviewer synthetic BigQuery mapping validated; empty-dataset rejection preserved it; import completed with reconciled totals and idempotent replay. Fresh isolated Shopify discovery/configuration/import completed successfully. Capture credentials, public snippet and local official-template preparation passed; no deployed receipt is claimed. Completed-import retry returns actionable 409 without starting a job. Actual GA4 property/export/IAM onboarding remains unverified. The isolated draft App listing is gated by Shopify App Store registration, which has not been completed."
+      "evidence": "2026-10-18: Private Audience-Push draft subtitle was saved/reloaded/restored without publication. Reviewer synthetic BigQuery mapping/import and invalid-dataset preservation passed. Isolated Shopify discovery/configuration/import completed. A guarded interruption of its exact app-preparation worker produced a real failed run; normal MCP retry completed, idempotent replay returned the same execution, and Sprout MRR8240 was preserved. Capture local official-template checks passed; a separate staging App Bridge harness at 86fcf6d produced a real contact_received receipt with usableContact:true at 19:40:21 UTC. Nine focused checks and full CI/staging deployment passed. A real isolated GA4 property and web stream now exist, with page_view and fusionmetrics_review_visit verified in Realtime; a daily-only US export is prepared, awaiting confirmation of the Google access grant. Native export, IAM and Shopify listing tracking remain unverified. Isolated listing access requires App Store registration and a truthful associated-account declaration."
     }
   ]
 }
