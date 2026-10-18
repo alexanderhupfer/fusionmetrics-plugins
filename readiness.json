@@ -9,7 +9,7 @@
     {
       "id": "hosted-service-terms-and-privacy-review",
       "status": "pending",
-      "evidence": "2026-10-18: Terms and expanded hosted/agent privacy disclosure are prepared in the application feature branch. Public production content probes do not yet find these changes. No acceptance or policy attestation has been made."
+      "evidence": "2026-10-18: Terms and expanded hosted/agent privacy disclosure are included in merged application release 3b233bf. Staging serves both intended pages with HTTP 200 and the expected content. Production rollout is waiting for an existing import; production content verification and final publisher policy attestations remain pending."
     },
     {
       "id": "production-client-oauth-and-scopes",
@@ -49,12 +49,12 @@
     {
       "id": "claude-portal-validation-and-connector-pairing",
       "status": "pending",
-      "evidence": "2026-10-18: Claude portal passed all seven source/directory checks for 1df1a48 (five skills, one MCP server, four informational URL warnings). GitHub ownership connection is resolved. The separate connector draft has listing, use cases, company, authentication and review instructions filled; the portal reports it is saved in this browser tab. Captured tools, final reviewer credentials/tests, compliance and pairing remain pending. Revalidate after later source commits."
+      "evidence": "2026-10-18: Claude portal passed all seven source/directory checks for 695987b (five skills, one MCP server, four informational URL warnings). GitHub ownership connection is resolved. The separate connector draft has listing, use cases, company, authentication and review instructions filled; the portal reports it is saved in this browser tab. Captured tools, final reviewer credentials/tests, compliance and pairing remain pending. Later evidence-only commits require source revalidation before submission."
     },
     {
       "id": "compatible-hosted-runtime",
       "status": "pending",
-      "evidence": "2026-10-18: application PR #153 merged as 3b233bf42d0c5373f65224a0a5d61d10729c9f5f. Main CI run 39128644199 passed. Deployment run 39129284013 passed its heavy pipeline gate and is validating staging; production deployment and deployed-SHA verification remain pending."
+      "evidence": "2026-10-18: application PR #153 merged as 3b233bf42d0c5373f65224a0a5d61d10729c9f5f. Main CI run 39128644199 and the heavy pipeline gate passed. Deployment run 39129284013 deployed and verified this exact SHA in staging. Production rollout is waiting for one active import to drain normally; production deployed-SHA verification remains pending."
     },
     {
       "id": "analytics-parity-and-migration",
