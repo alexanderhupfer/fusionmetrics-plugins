@@ -117,7 +117,7 @@ class Client:
 
     def start(self):
         result = self.exchange("initialize", {"protocolVersion": PROTOCOL, "capabilities": {},
-            "clientInfo": {"name": "fusionmetrics-review-probe", "version": "0.2.0"}})
+            "clientInfo": {"name": "fusionmetrics-review-probe", "version": "0.2.1"}})
         if not self.session:
             raise ValueError("Server did not create an MCP session.")
         self.exchange("notifications/initialized", notification=True)

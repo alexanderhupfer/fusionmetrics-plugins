@@ -16,7 +16,7 @@ ORIGINS = {
 
 
 def fetch(url):
-    request = Request(url, headers={"User-Agent": "Fusionmetrics-Plugin-Readiness/0.2.0"})
+    request = Request(url, headers={"User-Agent": "Fusionmetrics-Plugin-Readiness/0.2.1"})
     try:
         response = urlopen(request, timeout=20)
     except HTTPError as error:

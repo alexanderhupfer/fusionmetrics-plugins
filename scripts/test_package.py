@@ -65,6 +65,19 @@ class DistributionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Unverified submission gates|production endpoint"):
             validate(self.root, submission_ready=True)
 
+    def test_review_case_counts_match_portal_contract(self):
+        path = self.plugin / "plugin.json"
+        original = path.read_text()
+        for kind, count in (("positive", 4), ("positive", 6), ("negative", 2), ("negative", 4)):
+            with self.subTest(kind=kind, count=count):
+                manifest = json.loads(original)
+                cases = manifest["extensions"]["com.openai"]["review"]["test_cases"]
+                cases[kind] = [cases[kind][0]] * count
+                path.write_text(json.dumps(manifest))
+                with self.assertRaisesRegex(ValueError, "exactly five positive and three negative"):
+                    build(self.root)
+        path.write_text(original)
+
     def test_missing_analytics_permission_is_rejected(self):
         path = self.root / "openai-connection.json"
         connection = json.loads(path.read_text())

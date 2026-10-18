@@ -23,7 +23,7 @@ For a submission-readiness check, run `python3 scripts/validate.py --submission-
 ## Codex and ChatGPT
 
 1. Use the intended publisher's verified OpenAI organization and a project eligible for MCP submissions. Confirm submission permissions and global data residency.
-2. Complete `readiness.json`, run the packaged positive and negative test cases with a dedicated reviewer Organization, and record the results privately. The cases in `plugin.json` are proposed tests; none is asserted to have passed by its presence there.
+2. Complete `readiness.json`, run the exactly five positive and three negative packaged test cases with the existing reviewer Organization, and record the results privately. Broader publisher scenarios live in `docs/extended-test-cases.json` outside the ZIP. The cases are proposed tests; none is asserted to have passed by its presence there.
 3. Confirm that `extensions.com.openai.interface.termsOfServiceURL` points to the approved, publicly deployed hosted service terms page. The proposed production URL is `https://fusionmetrics.com/terms`; a local page draft or a configured URL does not prove it is live. Review the terms and their acceptance flow before adoption. The MIT license covers the plugin package only and is not a substitute for hosted service terms.
 4. Add a reviewer-accessible video URL to `extensions.com.openai.review.demo_recording_url`. The recording must demonstrate the actual test cases. Supply reviewer credentials through the portal, never in this repository or its ZIP.
 5. When preparation is authorized, build and upload the ZIP at https://platform.openai.com/plugins for draft validation. Complete the portal-supplied domain challenge, inspect the manifest-derived OAuth connection and tool scan, and resolve findings. A draft upload is not a directory submission. Do not accept final compliance attestations or click Submit during preparation.
@@ -31,7 +31,7 @@ For a submission-readiness check, run `python3 scripts/validate.py --submission-
 
 Use the production endpoint `https://fusionmetrics.com/api/mcp` for a public listing. Staging packages and credentials remain isolated. A reviewer account needs seeded, non-personal data and sign-in that does not depend on the founder completing an OTP, MFA, or Google account challenge. Check the configured Clerk sign-in path; do not weaken authentication for existing Partners.
 
-Reuse the existing iPhone App Review account and fictional Organization, as specified in the submission packet. Keep its credentials private and preserve its iPhone review data and access. Verify current plugin OAuth and fixture coverage before marking reviewer readiness complete; prior native-app sign-in does not verify the plugin connection.
+Reuse the existing iPhone App Review account and fictional Organization, as specified in the submission packet. The packaged sample-data cases require Fusionmetrics sign-in only; do not require reviewers to create or supply a Shopify Partner account. Keep credentials private and preserve the iPhone review baseline. Publisher-controlled Shopify tests remain separate, and coverage of the remaining exposed write tools must be resolved before submission. See the packet's reviewer/publisher access distinction. Verify current plugin OAuth and fixture coverage before marking reviewer readiness complete; prior native-app sign-in does not verify the plugin connection.
 
 ## Claude Code
 
@@ -60,11 +60,11 @@ Release order: deploy the compatible server through the application's CI/CD; tes
 
 - Test fresh GUI installation, browser OAuth, Organization choice, reconnect, revocation, and insufficient permission in Codex and Claude Code desktop. Record exact package revision and client versions.
 - Audit every exposed tool's title and annotations against its behavior. Analytics is read-only; dataset replacement is a write, and dataset validation/import calls external services. Local metadata tests do not replace a production tool scan.
-- Test each proposed review case through the published endpoint with a dedicated, populated reviewer Organization. Verify billing entitlement and sample imports without real Merchant data.
+- Test each packaged review case through the published endpoint with the existing populated reviewer Organization. Verify billing entitlement and fixed synthetic data. Exercise each exposed tool separately with authorized prerequisites and resolve any reviewer access limitations; a reduced case list does not waive that coverage.
 - Verify that MCP and OAuth metadata are reachable by the actual clients and review scanners. A preparation probe received Cloudflare error 1010; this was not a full client compatibility test.
 - Complete OpenAI's domain-verification challenge only after the portal supplies the exact token for `/.well-known/openai-apps-challenge`. Do not invent a verification value or treat an HTTP 200 with different content as verification.
 - Review privacy coverage for the data returned by tools, support links, service terms, publisher identity, and permissions before submitting.
-- Verify GA4 onboarding using an isolated property/dataset, least-privilege managed access, missing-table and denied-access failures, import completion and prepared acquisition queries. Verify both listing modes on an authorized test listing with baseline recovery.
+- Verify GA4 onboarding using an isolated property/dataset, least-privilege managed access, missing-table and denied-access failures, import completion and prepared acquisition queries. Synthetic BigQuery fixtures do not require Shopify Partner access but cannot prove live tracking/export setup. Verify both listing modes under publisher-controlled, explicitly authorized Partner access with baseline recovery. Record unavailable operations as blocked; do not attach real Partner data to the reviewer Organization.
 - Contact capture remains optional. It needs local repository edits and separate deployment; include supported-surface limitations in the listing and tests.
 
 ## Sources

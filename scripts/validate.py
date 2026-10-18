@@ -22,7 +22,7 @@ PLUGIN_FILES = {
 REPO_FILES = {
     ".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json",
     ".github/workflows/validate.yml", ".gitignore", "README.md", "LICENSE",
-    "docs/publication.md", "docs/submission-packet.md", "readiness.json", "openai-connection.json", "scripts/validate.py",
+    "docs/publication.md", "docs/submission-packet.md", "docs/extended-test-cases.json", "readiness.json", "openai-connection.json", "scripts/validate.py",
     "scripts/package.py", "scripts/test_package.py", "scripts/probe_public.py", "scripts/test_probe_public.py",
     "scripts/probe_authenticated.py", "scripts/test_probe_authenticated.py",
 }
@@ -149,7 +149,7 @@ def validate(root=ROOT, submission_ready=False):
             require(compatibility["privacyPolicyUrl"] == interface["privacyPolicyURL"], "Claude privacy policy differs")
             require(compatibility.get("termsOfServiceUrl") == interface.get("termsOfServiceURL"), "Claude service terms differ")
     cases = extension["review"]["test_cases"]
-    require(len(cases["positive"]) >= 5 and len(cases["negative"]) >= 3, "Need five positive and three negative review cases")
+    require(len(cases["positive"]) == 5 and len(cases["negative"]) == 3, "Need exactly five positive and three negative review cases")
     readiness = read_json(root / "readiness.json")
     require({gate["id"] for gate in readiness["gates"]} == GATES and len(readiness["gates"]) == len(GATES), "Readiness gates missing or duplicated")
     pending = [gate["id"] for gate in readiness["gates"] if gate["status"] != "verified" or not gate["evidence"].strip()]

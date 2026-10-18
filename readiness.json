@@ -29,12 +29,12 @@
     {
       "id": "reviewer-account-and-seeded-data",
       "status": "pending",
-      "evidence": "2026-10-18: read-only production DB/Clerk audit verified the reused iPhone reviewer has one active fictional Organization, administrator membership, lifetime access, password sign-in, no MFA and no other Organization membership. The two App dashboards and aggregate exist. Sprout Reviews loads in the analytics engine with 30 range-metric/revenue rows, three Merchant summaries and six timeline rows for 2026-08-30 through 2026-09-28. No Partner profiles, BigQuery credentials, GA4 mappings or scheduled refreshes exist. Reviewer plugin OAuth and separate live setup/acquisition fixtures remain pending; 1Password is locked. No password or iPhone baseline changed."
+      "evidence": "2026-10-18: read-only production DB/Clerk audit verified the reused iPhone reviewer has one active fictional Organization, administrator membership, lifetime access, password sign-in, no MFA and no other Organization membership. The two App dashboards and aggregate exist. Sprout Reviews loads in the analytics engine with 30 range-metric/revenue rows, three Merchant summaries and six timeline rows for 2026-08-30 through 2026-09-28. No Partner profiles, BigQuery credentials, GA4 mappings or scheduled refreshes exist. Reviewer plugin OAuth and separate live setup/acquisition fixtures remain pending; 1Password is locked. No password or iPhone baseline changed. The packaged sample-data cases require only Fusionmetrics sign-in. Shopify integration tests are publisher responsibilities; no Shopify Partner login or real Partner account will be shared with reviewers. Exposed write-tool review coverage remains unresolved."
     },
     {
       "id": "five-positive-three-negative-live-tests",
       "status": "pending",
-      "evidence": "10 positive and eight negative assistant cases are packaged. An authenticated operator probe now verifies reviewer isolation, 15 tool annotations, fixture totals, status reads and SQL/app rejection cases; its six guard tests pass. No reviewer OAuth token was obtained and no authenticated probe or assistant cases have run. Operator protocol checks are separate from actual client/assistant evidence."
+      "evidence": "2026-10-18: exactly five positive and three negative cases are packaged for the existing Fusionmetrics demo account without Shopify Partner or Google login. The broader ten-positive/eight-negative publisher regression scenarios are preserved in docs/extended-test-cases.json outside the ZIP. No authenticated probe or assistant cases have run. The operator probe and local guard tests do not establish live reviewer coverage."
     },
     {
       "id": "review-demo-recording",
@@ -64,7 +64,7 @@
     {
       "id": "listing-and-ga4-browser-workflows",
       "status": "pending",
-      "evidence": "Both permanent listing edits and reversible experiments are documented, with artifact validation. GA4 mapping/import adapters pass local tests. Authorized test-listing edits/restoration, real export/IAM configuration and completed acquisition imports remain untested."
+      "evidence": "Both permanent listing edits and reversible experiments are documented, with artifact validation. GA4 mapping/import adapters pass local tests. Authorized test-listing edits/restoration, real export/IAM configuration and completed acquisition imports remain untested. Reviewer copy recommendations and status inspection require no provider login. Publisher tests of actual Shopify/Google mutations still require an explicitly authorized target; if unavailable, record blocked rather than treating seeded data or a recording as successful live execution."
     }
   ]
 }

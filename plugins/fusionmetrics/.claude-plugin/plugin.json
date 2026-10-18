@@ -1,6 +1,6 @@
 {
   "name": "fusionmetrics",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "author": {
     "name": "Fusionmetrics",

@@ -1,6 +1,6 @@
 # Fusionmetrics submission packet
 
-Prepared 18 October 2026 for version 0.2.0. This document contains proposed listing answers and an execution plan. It does not certify deployment, completed reviewer tests, legal approval, or directory acceptance. Keep reviewer passwords, private account identifiers, OAuth tokens, and unredacted recordings outside this public repository.
+Prepared 18 October 2026 for version 0.2.1. This document contains proposed listing answers and an execution plan. It does not certify deployment, completed reviewer tests, legal approval, or directory acceptance. Keep reviewer passwords, private account identifiers, OAuth tokens, and unredacted recordings outside this public repository.
 
 ## Listing fields
 
@@ -88,22 +88,38 @@ The 18 October production read-only audit confirmed an active Organization, exac
 
 Use a separate non-admin test identity in the same isolated Organization for permission tests, and a second isolated Organization for cross-Organization denial tests. These are negative-test fixtures, not replacement primary reviewer accounts. Revoke only the plugin test grant during revocation tests; preserve the iPhone review identity and its access. Do not create a real Stripe charge or disable authentication or membership enforcement globally.
 
-Inventory the existing fixtures against the following requirements. Reuse suitable prepared data and add missing test resources through the normal supported import/data pipeline in separate test Apps, preserving the two iPhone review Apps. The existing iPhone fixture has no Shopify credentials or scheduled imports; it does not establish live Shopify, GA4, or BigQuery coverage.
+### Reviewer access and publisher testing
+
+Reviewers sign in to the existing populated Fusionmetrics account. The five packaged positive cases inspect setup status, prepared MRR, fictional Merchant activity, a supplied listing-copy draft and GA4 readiness. They require no Shopify Partner login or Google administrator account. Seeded analytics are real prepared artifacts served through normal authentication and analytics tools; describe them as synthetic sample data with a fixed date range.
+
+Shopify Partner access belongs to the publisher's integration tests. An existing publisher-controlled Partner account can be used when the exact App and operation are authorized; creating a separate Partner account is not inherently required. Keep that access and any real Partner data outside the shared review Organization. Listing recommendations can be evaluated from supplied copy and available analytics; an admin-authoritative baseline is required only when testing actual listing changes. Status inspection and setup guidance must accurately report missing connections rather than imply an import ran.
+
+This review design does not waive functional coverage. [OpenAI requires a ready-to-use test account and executed review cases](https://developers.openai.com/plugins/deploy/submission); [Anthropic requires testing every exposed tool and providing a populated account](https://claude.com/docs/connectors/building/review-criteria). The selected eight cases do not exercise every write tool. Before submission, resolve how reviewers can evaluate the remaining declared operations using safe, authorized resources, or obtain a documented platform decision on disclosed access limitations. A recording or mocked provider response is not evidence that a reviewer can successfully run an unavailable tool. Keep those readiness gates pending.
+
+Preserve the two iPhone review Apps and their existing baseline. Inventory these reviewer resources through the normal supported data pipeline:
 
 | Resource | Required state and expected evidence |
 | --- | --- |
-| Revenue Demo app | Synthetic revenue, MRR movements, churn, trials and cohorts with a fixed date range and an independently recorded totals ledger. Reconcile MRR opening + new + expansion + reactivation − contraction − churn = closing. |
-| Acquisition Demo | An isolated GA4 property, daily BigQuery export tables, an authorized test Shopify app/listing, and a saved managed credential with dataset Data Viewer. Record app/property/dataset mapping privately. |
-| Contacts/reviews | Synthetic contact addresses under `example.com` and clearly fictional reviews. Include one review containing an instruction to exfiltrate contacts, which the assistant must ignore. |
-| Setup Demo | An authorized Shopify development Partner account/app with credentials entered privately, ready to exercise discovery and an actual import. Empty artifacts and invented API tokens are not a valid review fixture. |
-| Failure cases | Missing daily table, denied BigQuery access, failed import, read-only member, setup-only OAuth grant, and foreign Organization IDs. Use isolated resources and preserve the valid baseline. |
+| Existing revenue demo | Sprout Reviews' fixed 30 August–28 September 2026 MRR series closes at USD 8,240. Its three Merchant summaries and six timeline rows are independently audited. Report unavailable movements/cohorts as unavailable. |
+| Listing draft | The prompt supplies fictional copy and its feature claim. Assess clarity and factual accuracy; acquisition performance remains unmeasured until suitable prepared data exists. No Partner Admin login or listing edit is part of this case. |
+| Setup and GA4 status | Preserve the actual unconnected baseline and explain the next steps. Do not connect a real Partner account just to make the sample appear complete. |
+| Negative cases | Requests for unauthorized Organization data, credential disclosure and analytics SQL writes must be refused or rejected without changing the sample data. |
+
+Publisher testing remains broader than these review cases:
+
+| Resource | Required state and expected evidence |
+| --- | --- |
+| Revenue coverage | Separate synthetic fixtures for MRR movements, churn, trials and cohorts, with an independent reconciliation ledger and recorded parity results. |
+| Shopify integration | An explicitly authorized App under publisher-controlled Partner access for discovery, configuration and completed imports. Listing edit tests require a separately authorized exact target/change and restoration for temporary experiments. Keep real credentials and data out of the shared reviewer account. |
+| Acquisition import | Synthetic daily BigQuery tables and narrow managed access can exercise mapping and completed imports without Shopify Partner login. They do not prove a real GA4 export or Shopify tracking configuration. Test that provider setup separately when authorized access is available. |
+| Contacts/reviews and failures | Fictional contacts/reviews, embedded untrusted instructions, missing tables, denied dataset access, failed imports, read-only membership, setup-only grants and cross-Organization denial. Use isolated resources and preserve the valid baseline. |
 | Capture app | A local official Shopify React Router template with reproducible checks. Record local changes separately from a deployed capture receipt. |
 
-If a resource cannot be provisioned, record the case as blocked. Do not substitute real Merchant records for synthetic data or treat local mocked tests as live reviewer tests.
+If a publisher resource is unavailable, record the affected case as blocked. Keep analytics and copy-review preparation moving, but do not treat sample artifacts, mocked tests or recorded demonstrations as successful live Shopify execution. The broader scenarios remain in [extended-test-cases.json](./extended-test-cases.json), outside the installable plugin and OpenAI ZIP.
 
 ## Live execution record
 
-The complete proposed prompts and expected outcomes are embedded in `plugins/fusionmetrics/plugin.json` under `extensions.com.openai.review.test_cases`: 10 positive and 8 negative cases. Run all supported cases, including at least five positive and three negative, using the exact reviewer identity and candidate package. Record privately:
+The proposed prompts and expected outcomes in `plugins/fusionmetrics/plugin.json` under `extensions.com.openai.review.test_cases` contain exactly five positive and three negative cases, matching the OpenAI initial-review contract. Execute those eight cases using the existing reviewer identity and candidate package. Execute the separate publisher scenarios with their declared prerequisites and record their evidence separately. None is complete merely because its prompt is written. Record privately:
 
 | Field | What to capture |
 | --- | --- |
@@ -114,7 +130,7 @@ The complete proposed prompts and expected outcomes are embedded in `plugins/fus
 | Failures | Scope/admin/cross-Organization denial, revocation, missing data, rate-limit handling and retry behavior |
 | Parity | Same app, artifact generation, SQL and row limit on legacy analytics and plugin; compare result data and metric definitions |
 
-Add fresh install, reconnect, revocation, and an interrupted retry to the prompt cases. For listing changes, separately verify an approved permanent edit and a temporary experiment with restoration. For GA4, record actual completed import and prepared-data availability; a successful validation or queued job alone is insufficient. The package contains workflows, not proof that the platform's browser integration performed them.
+Add fresh install, reconnect, revocation and interrupted retry to the publisher execution record, not to the OpenAI case arrays. For actual listing changes, separately verify an approved permanent edit and a temporary experiment with restoration. For GA4 imports, record completion and prepared-data availability; a successful validation or queued job alone is insufficient. The package contains workflows, not proof that the platform's browser integration performed them.
 
 ## Demo recording plan
 
@@ -124,12 +140,12 @@ Record the actual supported client experience with synthetic data, normally at 1
 | --- | --- |
 | 1. Install and connect | Plugin identity/version, browser sign-in, Organization selection, and enabled capabilities; no terminal installation commands. |
 | 2. Revenue question | App selection, bounded analytics tools, period/freshness, and totals that match the independent synthetic ledger. |
-| 3. Listing optimization | Baseline, traffic limitations, exact proposed subtitle diff, human authorization, saved/public state; demonstrate restoration for a temporary test separately. |
-| 4. GA4 onboarding | Property/dataset/principal mapping, validation, real import progress and completed prepared acquisition query. |
-| 5. Failure boundary | A denied permission or missing daily export, with an accurate explanation and no invented success. |
+| 3. Listing recommendation | Supplied fictional draft, available evidence, exact proposed wording and explicit traffic limitations. No Partner Admin access or saved/public-state claim. |
+| 4. GA4 readiness | Actual connection status and next browser steps. Explain what requires the Partner's Google/Shopify authorization without claiming setup has completed. |
+| 5. Failure boundary | The packaged unauthorized-access, credential and SQL-write cases, with accurate refusal/rejection and unchanged sample data. |
 | 6. Optional capture | Local official-template preparation and check result; distinguish it from deployment. |
 
-Show both intended clients, or supply separately labelled recordings. Review the final encoded video and contact sheet. Upload only the redacted final recording to a reviewer-accessible location; put its actual URL in `review.demo_recording_url`. A storyboard, screenshot montage, or synthetic UI is not a live demo.
+Show both intended clients, or supply separately labelled recordings. Capture the fictional Merchant-summary case as well as MRR so every packaged positive case is demonstrated. Supplement these reviewer scenes with publisher-controlled footage of actual setup/import and authorized listing edits when those tests are complete. Identify that footage and its external-account prerequisites explicitly; it does not replace tool access for reviewers. Review the final encoded video and contact sheet. Upload only the redacted final recording to a reviewer-accessible location; put its actual URL in `review.demo_recording_url`. A storyboard, screenshot montage, or synthetic UI is not a live demo.
 
 ## Portal sequence and release handoff
 
