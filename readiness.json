@@ -4,7 +4,7 @@
     {
       "id": "publisher-and-portal-access",
       "status": "verified",
-      "evidence": "2026-10-18: OpenAI accepted candidate 0.2.4 into an unsubmitted business-identity draft and all five skill scans passed. Claude publisher/GitHub access works, and all seven source checks passed at 2985259. Candidate 0.2.5 changes review metadata only; its final portal validation is tracked separately. Neither directory submission nor legal attestations have been performed."
+      "evidence": "2026-10-18: OpenAI accepted 0.2.5 into an unsubmitted business-identity draft; all five skill scans passed, and the demo URL/reviewer information are complete. Claude publisher/GitHub access works and all seven source checks passed for 0.2.5. Neither directory submission nor legal attestations have been performed."
     },
     {
       "id": "hosted-service-terms-and-privacy-review",
@@ -39,17 +39,17 @@
     {
       "id": "review-demo-recording",
       "status": "verified",
-      "evidence": "2026-10-18: Real Codex CLI and Claude Code PTY sessions each demonstrate the five positive and three negative cases using the installed 0.2.4 plugin and synthetic reviewer data. Videos are 1920x1080 H.264, 4m22s and 2m42s. Only idle pauses and bootstrap/exit were cut; no tool execution was accelerated. Final decode, contact sheets and terminal frames were checked. Both uploads match local hashes and have anyone-with-link reader access. Codex URL is in review.demo_recording_url; both links and scope limits are in docs/submission-packet.md. No GUI installation or external provider setup is claimed."
+      "evidence": "2026-10-18: Real Codex CLI and Claude Code PTY sessions each demonstrate the five positive and three negative cases using the installed 0.2.4 plugin and synthetic reviewer data. Videos are 1920x1080 H.264, 4m22s and 2m42s. Only idle pauses and bootstrap/exit were cut; output between cuts plays at original speed. Final decode, contact sheets and terminal frames were checked. Both uploads match local hashes and have anyone-with-link reader access; anonymous download HEAD requests returned 200 video/mp4 and the exact file sizes. Codex URL is in review.demo_recording_url; both links and scope limits are in docs/submission-packet.md. No GUI installation or external provider setup is claimed."
     },
     {
       "id": "scanner-reachability-and-domain-verification",
       "status": "pending",
-      "evidence": "2026-10-18: OpenAI passed all five skills in 0.2.4 and authenticated/scanned all 15 tools. Metadata-only 0.2.5 adds the actual demo URL. Domain challenge PR #154 passed main/heavy/staging checks; its production deployment is waiting for a healthy existing import to drain. Portal domain verification remains pending."
+      "evidence": "2026-10-18: OpenAI passed all five skills in 0.2.5 and authenticated/scanned all 15 deployed tools. Actual demo URL and private reviewer information are saved; the metadata review-information blocker is gone. Domain challenge PR #154 passed main/heavy/staging checks; production rollout is waiting for a healthy existing import to drain. Portal domain verification remains pending."
     },
     {
       "id": "claude-portal-validation-and-connector-pairing",
       "status": "pending",
-      "evidence": "2026-10-18: All seven source checks passed at 2985259 for 0.2.4, with four informational URL warnings. Connector draft authenticated the reviewer but captured 11 setup tools due to the initial challenge. Reauthorize after PR #155, validate final 0.2.5 revision, and resolve remaining policy/pairing fields. All drafts remain unsubmitted."
+      "evidence": "2026-10-18: All seven source checks passed for 0.2.5, with four informational URL warnings. Connector draft contains protected reviewer credentials, both native demo links and actual test limitations. It authenticated the reviewer but captured 11 setup tools due to the old initial challenge. Reauthorize after PR #155, verify all 15 tools and resolve remaining policy/pairing fields. All drafts remain unsubmitted."
     },
     {
       "id": "compatible-hosted-runtime",
