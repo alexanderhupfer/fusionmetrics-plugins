@@ -1,6 +1,6 @@
 # Fusionmetrics submission packet
 
-Prepared 18 October 2026 for version 0.2.4. This document contains proposed listing answers and an execution plan. It does not certify deployment, completed reviewer tests, legal approval, or directory acceptance. Keep reviewer passwords, private account identifiers, OAuth tokens, and unredacted recordings outside this public repository.
+Prepared 18 October 2026 for version 0.2.5. This document contains proposed listing answers and an execution plan. It does not certify deployment, completed reviewer tests, legal approval, or directory acceptance. Keep reviewer passwords, private account identifiers, OAuth tokens, and unredacted recordings outside this public repository.
 
 ## Listing fields
 
@@ -133,6 +133,15 @@ The proposed prompts and expected outcomes in `plugins/fusionmetrics/plugin.json
 Add fresh install, reconnect, revocation and interrupted retry to the publisher execution record, not to the OpenAI case arrays. For actual listing changes, separately verify an approved permanent edit and a temporary experiment with restoration. For GA4 imports, record completion and prepared-data availability; a successful validation or queued job alone is insufficient. The package contains workflows, not proof that the platform's browser integration performed them.
 
 ## Demo recording plan
+
+### Recorded walkthroughs — 18 October 2026
+
+- [Codex CLI walkthrough, 4m22s](https://drive.google.com/file/d/1Hq9_Ov-tK8naDcTdz0NJMe32DJ3mUkOq/view)
+- [Claude Code walkthrough, 2m42s](https://drive.google.com/file/d/1U6JQrNfyibsgRnvQIidxe3CwL_uDzHLQ/view)
+
+Both videos show actual client sessions with the preinstalled 0.2.4 candidate, normal reviewer OAuth, and fictional data. Each demonstrates all five positive and three negative cases. Candidate 0.2.5 adds review metadata; the five skills and MCP configurations are byte-identical to the recorded version. Only idle pauses and bootstrap/exit were removed. The videos do not demonstrate desktop GUI installation, Shopify discovery, live Google provider setup, or contact-capture deployment. Browser preview processing can lag after upload; the files are also downloadable. Both files have reader access for anyone with the link, and their uploaded sizes and MD5 checksums match the reviewed local MP4s.
+
+The original capture plan below identifies additional scenes that are not in these core-case walkthroughs. Keep those distinctions in reviewer instructions.
 
 Record the actual supported client experience with synthetic data, normally at 1920×1080. Use the existing Chrome profile/approved browser connection; do not launch an automation profile. Do not display secrets, tokens, real Merchant contacts, or private account lists. Pause capture during sensitive sign-in. Clearly label cuts over actual export/import waiting.
 

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fusionmetrics",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "author": {
     "name": "Fusionmetrics",
@@ -99,10 +99,11 @@
               "expected_behavior": "Decline the write because analytics SQL is read-only. Do not substitute another tool, credential or data source to carry out the deletion. If an unsupported statement reaches the server, report its rejection accurately and leave the prepared data unchanged."
             }
           ]
-        }
+        },
+        "demo_recording_url": "https://drive.google.com/file/d/1Hq9_Ov-tK8naDcTdz0NJMe32DJ3mUkOq/view"
       },
       "publication": {
-        "release_notes": "Includes existing MCP analytics, listing optimization, revenue setup and GA4/BigQuery onboarding. Version 0.2.4 distinguishes synthetic import evidence from live provider setup and keeps proposed listing copy within verified features. Includes five positive and three negative review cases using fictional demo data. Requires analytics reauthorization and the compatible hosted server."
+        "release_notes": "Version 0.2.5 adds recorded Codex and Claude Code review evidence. The five skills and MCP configurations are unchanged from the tested 0.2.4 candidate. Includes existing MCP analytics, listing optimization, revenue setup and GA4/BigQuery onboarding, with five positive and three negative review cases using fictional demo data. Requires analytics reauthorization and the compatible hosted server."
       }
     }
   }

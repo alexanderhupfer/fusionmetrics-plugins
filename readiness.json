@@ -4,7 +4,7 @@
     {
       "id": "publisher-and-portal-access",
       "status": "verified",
-      "evidence": "2026-10-18: OpenAI accepted the ZIP into an unsubmitted business-identity draft and passed all five skill scans. Claude publisher portal is accessible, GitHub ownership is connected, and all seven source checks passed on the previous candidate. Neither directory submission nor legal attestations have been performed."
+      "evidence": "2026-10-18: OpenAI accepted candidate 0.2.4 into an unsubmitted business-identity draft and all five skill scans passed. Claude publisher/GitHub access works, and all seven source checks passed at 2985259. Candidate 0.2.5 changes review metadata only; its final portal validation is tracked separately. Neither directory submission nor legal attestations have been performed."
     },
     {
       "id": "hosted-service-terms-and-privacy-review",
@@ -19,7 +19,7 @@
     {
       "id": "organization-permissions-and-revocation",
       "status": "pending",
-      "evidence": "2026-10-18: Focused application tests cover identity, grant, Organization, admin and billing boundaries. Revoking the dedicated Codex refresh token returned 200, and subsequent refresh returned invalid_grant. The issued access JWT remained accepted, matching Clerk limitations; normal Codex reconnect succeeded. Live non-admin and cross-Organization fixtures remain untested."
+      "evidence": "2026-10-18: Application tests cover identity, grant, Organization, admin and billing boundaries. Live MCP Inspector checks rejected analytics selection, app configuration, import retry and capture preparation using actual IDs from a different Organization, without revealing its records. Dedicated Codex refresh-token revocation returned 200 and subsequent refresh invalid_grant; an already-issued Clerk JWT remained valid until expiry, and normal reconnect succeeded. A live non-admin fixture remains untested."
     },
     {
       "id": "tool-titles-and-annotations",
@@ -34,22 +34,22 @@
     {
       "id": "five-positive-three-negative-live-tests",
       "status": "verified",
-      "evidence": "2026-10-18: All five positive and three negative cases passed in native Codex CLI and Claude Code with actual bundled plugin skills and dedicated reviewer OAuth. Codex ran 0.2.4; Claude ran six cases on 0.2.3 and passed focused reruns of changed listing/GA4 skills on 0.2.4. Read-only MCP allowlists bounded these conversational tests; they do not establish setup-write, browser-install or server-authorization coverage. Private transcripts/evaluations retained. Authenticated operator probe separately passed 13/13 checks."
+      "evidence": "2026-10-18: All five positive and three negative cases passed in native Codex CLI and Claude Code with actual bundled skills and reviewer OAuth. Both recorded walkthroughs run candidate 0.2.4; metadata-only 0.2.5 preserves every skill and MCP configuration. Read-only MCP allowlists bounded these assistant tests, which do not establish setup-write, GUI-install or provider-provisioning coverage. Separate authenticated protocol probe passed 13/13, and official MCP Inspector 2.11.0 passed 14/14 recorded checks, including actual cross-Organization denials and idempotent GA4 replay."
     },
     {
       "id": "review-demo-recording",
-      "status": "pending",
-      "evidence": "Scene plan, capture precautions and required evidence are in docs/submission-packet.md. No live demo or reviewer-accessible recording URL exists yet."
+      "status": "verified",
+      "evidence": "2026-10-18: Real Codex CLI and Claude Code PTY sessions each demonstrate the five positive and three negative cases using the installed 0.2.4 plugin and synthetic reviewer data. Videos are 1920x1080 H.264, 4m22s and 2m42s. Only idle pauses and bootstrap/exit were cut; no tool execution was accelerated. Final decode, contact sheets and terminal frames were checked. Both uploads match local hashes and have anyone-with-link reader access. Codex URL is in review.demo_recording_url; both links and scope limits are in docs/submission-packet.md. No GUI installation or external provider setup is claimed."
     },
     {
       "id": "scanner-reachability-and-domain-verification",
       "status": "pending",
-      "evidence": "2026-10-18: OpenAI accepted the 0.2.4 ZIP as an unsubmitted draft and is scanning its skills. Reviewer OAuth succeeds; existing MCP scan sees all 15 deployed tools. Domain challenge PR #154 passed main/heavy/staging checks, and production deploy is draining an existing import. Domain verification remains pending."
+      "evidence": "2026-10-18: OpenAI passed all five skills in 0.2.4 and authenticated/scanned all 15 tools. Metadata-only 0.2.5 adds the actual demo URL. Domain challenge PR #154 passed main/heavy/staging checks; its production deployment is waiting for a healthy existing import to drain. Portal domain verification remains pending."
     },
     {
       "id": "claude-portal-validation-and-connector-pairing",
       "status": "pending",
-      "evidence": "2026-10-18: All seven source checks passed for plugin commit 9546c4b, with four informational URL warnings. Connector draft authenticated the reviewer but captured only 11 setup tools because of the initial-scope challenge. Reauthorize after PR #155, validate the final candidate commit and complete supported policy/pairing fields. Drafts are unsubmitted."
+      "evidence": "2026-10-18: All seven source checks passed at 2985259 for 0.2.4, with four informational URL warnings. Connector draft authenticated the reviewer but captured 11 setup tools due to the initial challenge. Reauthorize after PR #155, validate final 0.2.5 revision, and resolve remaining policy/pairing fields. All drafts remain unsubmitted."
     },
     {
       "id": "compatible-hosted-runtime",
@@ -58,13 +58,13 @@
     },
     {
       "id": "analytics-parity-and-migration",
-      "status": "pending",
-      "evidence": "2026-10-18: candidate analytics reuse the legacy implementation and tests compare the four tool schemas. The legacy endpoint remains. Live same-artifact result comparison and upgraded desktop grants are pending."
+      "status": "verified",
+      "evidence": "2026-10-18: Both actual server implementations returned identical results in 11 comparisons over the same reviewer Parquet artifacts: app listing/selection/schema, Sprout MRR 8240, three Merchant rows, six events, Beacon MRR 4260, rejected SQL mutation/filesystem access and unknown app. The local MCP bridge uses the real analytics engine; catalogue/optional adapters are test stubs. This verifies handler/data parity, not the old public endpoint bearer-token path. New production analytics passed native-client and protocol checks with fresh full-scope grants. The legacy endpoint remains available; no forced migration or retirement is claimed."
     },
     {
       "id": "listing-and-ga4-browser-workflows",
       "status": "pending",
-      "evidence": "2026-10-18: Authorized Audience-Push draft subtitle saved, reloaded, restored exactly and reloaded again without publication. Reviewer synthetic BigQuery mapping validated through UI/MCP; empty dataset rejection preserved the valid mapping; acquisition import completed and totals reconciled. Real GA4 property/export/IAM onboarding, live Partner API import and public listing experiments remain unverified. No real data was added to the shared reviewer Organization."
+      "evidence": "2026-10-18: Authorized private Audience-Push draft subtitle saved, reloaded, restored exactly and reloaded without publication. The existing ready app configuration also returned reused:true twice with one idempotency key and no new import. Reviewer synthetic BigQuery mapping validated through UI/MCP; empty dataset rejection preserved it; import completed with reconciled totals, and Inspector replay returned the prior successful operations. Real GA4 property/export/IAM onboarding, fresh Partner discovery/import and capture preparation remain unverified. Real data has not been shared with reviewers."
     }
   ]
 }
