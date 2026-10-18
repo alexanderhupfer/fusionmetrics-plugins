@@ -24,8 +24,11 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual(first, build(self.root).read_bytes())
         with ZipFile(archive) as bundle:
             self.assertEqual(set(bundle.namelist()), PLUGIN_FILES)
+            for relative in PLUGIN_FILES:
+                self.assertEqual(bundle.read(relative), (self.plugin / relative).read_bytes())
             server = json.loads(bundle.read("mcp.json"))["mcpServers"][self.manifest["name"]]
-            auth = server["extensions"]["com.openai"]["auth"]
+            self.assertNotIn("extensions", server)
+            auth = json.loads((self.root / "openai-connection.json").read_text())["auth"]
             self.assertEqual(auth["baseScopes"], SCOPES)
             self.assertEqual(auth["defaultScopes"], SCOPES)
             self.assertEqual(auth["resource"], server["url"])

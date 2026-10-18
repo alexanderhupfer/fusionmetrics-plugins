@@ -16,7 +16,7 @@ PLUGIN_FILES = {
 REPO_FILES = {
     ".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json",
     ".github/workflows/validate.yml", ".gitignore", "README.md", "LICENSE",
-    "docs/publication.md", "readiness.json", "scripts/validate.py",
+    "docs/publication.md", "readiness.json", "openai-connection.json", "scripts/validate.py",
     "scripts/package.py", "scripts/test_package.py",
 }
 GATES = {
@@ -110,6 +110,11 @@ def validate(root=ROOT, submission_ready=False):
     endpoint = server["url"]
     public_url(endpoint)
     require(server == {"type": "streamable-http", "url": endpoint}, "Portable MCP config must remain URL-only")
+    connection = read_json(root / "openai-connection.json")
+    require(connection["url"] == endpoint and connection["auth"] == {
+        "type": "oauth", "client": {"mode": "dcr"}, "resource": endpoint,
+        "baseScopes": SCOPES, "defaultScopes": SCOPES,
+    }, "OpenAI submission connection settings differ from the setup-only scope policy")
     require(read_json(plugin / ".mcp.json") == {"mcpServers": {name: {"type": "http", "url": endpoint}}}, "Legacy MCP mismatch")
     require(read_json(plugin / ".claude-mcp.json") == {"mcpServers": {name: {"type": "http", "url": endpoint, "oauth": {"scopes": " ".join(SCOPES)}}}}, "Claude endpoint/scopes mismatch")
     for host in ("codex", "claude", "cursor"):
