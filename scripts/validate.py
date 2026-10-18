@@ -12,7 +12,7 @@ SKILLS = {"get-started", "analytics", "setup", "optimize-listing", "ga4-bigquery
 PLUGIN_FILES = {
     "plugin.json", "mcp.json", ".mcp.json", ".claude-mcp.json",
     ".codex-plugin/plugin.json", ".claude-plugin/plugin.json", ".cursor-plugin/plugin.json",
-    "skills/setup/SKILL.md", "README.md", "SUPPORT.md", "LICENSE", "assets/logo.svg",
+    "skills/setup/SKILL.md", "skills/setup/references/official-template.md", "README.md", "SUPPORT.md", "LICENSE", "assets/logo.svg",
     "skills/get-started/SKILL.md", "skills/analytics/SKILL.md", "skills/ga4-bigquery/SKILL.md",
     "skills/ga4-bigquery/references/browser-setup.md", "skills/optimize-listing/SKILL.md",
     "skills/optimize-listing/references/analytics.md", "skills/optimize-listing/references/traffic-quality.md",
@@ -108,7 +108,7 @@ def validate(root=ROOT, submission_ready=False):
     require(svg.attrib["viewBox"] == "0 0 512 512", "Expected square 512px artwork")
     require(not any(tag.tag.split("}")[-1] in {"script", "foreignObject"} for tag in svg.iter()), "Executable SVG content")
     skill = (plugin / "skills/setup/SKILL.md").read_text()
-    require(skill.startswith("---\nname: setup\ndescription: ") and "setup_get_instructions" in skill and "setup_get_status" in skill, "Invalid setup skill")
+    require(skill.startswith("---\nname: setup\ndescription: ") and "setup_get_status" in skill and "references/official-template.md" in skill, "Invalid setup skill")
     require(extension["onboardingSkill"] == "./skills/get-started/SKILL.md", "Invalid entry skill")
     for skill_name in SKILLS:
         directory = plugin / "skills" / skill_name

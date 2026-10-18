@@ -8,7 +8,7 @@ Prepared 18 October 2026 for version 0.2.0. This document contains proposed list
 | --- | --- |
 | Name | Fusionmetrics |
 | Short description | Shopify analytics and growth |
-| Publisher | Fusionmetrics / AC App-commerce UG (haftungsbeschränkt) |
+| Publisher | Fusionmetrics / AC App-Commerce UG (haftungsbeschränkt) |
 | Contact | Alex from Fusionmetrics, Founder — alex@fusionmetrics.com |
 | Website | https://fusionmetrics.com/agent-setup |
 | Support | https://fusionmetrics.com/support/chat |
@@ -75,6 +75,8 @@ Required permissions: the first four tools require `analytics:read`; read-only s
 - Deletion/revocation: revocation removes future authorized access, not previously returned assistant messages or all service records. Use the privacy policy and support process for deletion requests. Verify current retention and subprocessor disclosures before attesting to them.
 - Charging: no purchase is made by an analytics tool. An eligible Fusionmetrics plan is required; do not claim that the hosted service is free because the plugin files use MIT.
 - AI training, regional storage, contractual processing terms, certifications, and exact retention periods: answer only from approved company policy. The code audit does not establish these claims. Leave unsupported portal answers unconfirmed.
+
+The Claude portal also asks the publisher to attest that execution stays within declared MCP servers. This package declares an optional bundled Python validator and user-authorized local app edits/checks, as well as separately authorized browser workflows. Do not tick that attestation without resolving how it applies to these declared capabilities. The directory policy permits external resources when requested and intended by the user; a passing source scan does not constitute policy approval. The plugin's setup workflow and template recipe are bundled, avoiding dynamically fetched behavioral instructions.
 
 ## Reviewer account and test data
 

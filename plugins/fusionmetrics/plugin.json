@@ -54,31 +54,31 @@
             {
               "description": "Resume setup and report actual status",
               "prompt": "Check my Fusionmetrics setup progress.",
-              "tools_triggered": "setup_get_instructions, setup_get_status",
+              "tools_triggered": "setup_get_status",
               "expected_behavior": "Read the current workflow and selected Organization's status. Report actual app, import, and capture state without exposing credentials or inventing completion."
             },
             {
               "description": "Connect a Partner account through browser credential entry",
               "prompt": "Help me connect my Shopify Partner account to Fusionmetrics.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_request_credential_entry",
+              "tools_triggered": "setup_get_status, setup_request_credential_entry",
               "expected_behavior": "Create the authorized browser handoff. Have the human enter credentials in the browser, never chat or repository files, then check handoff status."
             },
             {
               "description": "Discover apps in a connected Partner account",
               "prompt": "Find the Shopify apps in the Partner account I just connected.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_discover_apps",
+              "tools_triggered": "setup_get_status, setup_discover_apps",
               "expected_behavior": "Use the connected Partner account in the selected Organization, initiate discovery after authorization, and report progress without guessing app identities."
             },
             {
               "description": "Configure a confirmed app and start its import",
               "prompt": "Set up revenue imports for my demo app. Ask me to confirm its identity and billing behavior first.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_configure_app",
+              "tools_triggered": "setup_get_status, setup_configure_app",
               "expected_behavior": "Ask the human to confirm the matching app and subscription billing behavior before saving configuration. Report queued or actual import status accurately."
             },
             {
               "description": "Prepare optional contact capture locally",
               "prompt": "Add optional Merchant contact capture to this official Shopify React Router app. Run local checks and leave deployment to me.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_get_capture_installation, setup_mark_capture_prepared",
+              "tools_triggered": "setup_get_status, setup_get_capture_installation, setup_mark_capture_prepared",
               "expected_behavior": "Use browser credential entry if needed, apply only the public snippet, and run the app's required checks. Record prepared only after checks pass. Report changed files and distinguish local preparation from live contact receipt."
             },
             {

@@ -42,6 +42,8 @@ Submit the connector and bundle from the same organization and pair them. The re
 
 ## Capability and migration contract
 
+The setup workflow and official-template recipe are bundled and versioned for directory review; plugin installation does not delegate behavioral updates to a remote instruction tool. Native MCP clients can continue using the existing instruction tool.
+
 The five bundled skills route requests to setup, existing analytics, listing optimization, and GA4/BigQuery onboarding. The four analytics operations (`list_apps`, `select_app`, `describe_schema`, `run_sql`) reuse the legacy implementation, including available Merchant contacts and reviews. The plugin may therefore return personal data within the selected Organization; review privacy disclosures and use synthetic reviewer data.
 
 GA4 uses `ga4_get_status`, `ga4_configure_dataset`, and `ga4_import_attribution`. The server validates and saves mappings through the existing application service, preserves mappings on failed validation, enforces admin/scope/billing checks, and tracks the requested import through completion or failure. This package requires the compatible hosted server to be deployed and verified before release. Until then, the skill can guide the existing browser UI without claiming MCP execution succeeded.
@@ -72,6 +74,7 @@ Requirements checked on 18 October 2026:
 - https://claude.com/docs/plugins/pre-submission-checklist
 - https://claude.com/docs/plugins/submit
 - https://claude.com/docs/connectors/building/review-criteria
+- https://support.claude.com/en/articles/13145358-anthropic-software-directory-policy
 - https://code.claude.com/docs/en/desktop#install-plugins
 
 Recheck the portal requirements before submission. Neither platform guarantees a fixed review time.
