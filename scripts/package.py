@@ -1,11 +1,10 @@
 """Build a deterministic OpenAI candidate ZIP. Never submit or release it."""
 import argparse
 import hashlib
-import json
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
-from validate import PLUGIN_FILES, ROOT, SCOPES, validate
+from validate import PLUGIN_FILES, ROOT, validate
 
 
 def build(root=ROOT, submission_ready=False):
@@ -21,14 +20,6 @@ def build(root=ROOT, submission_ready=False):
     with ZipFile(archive, "w", compression=ZIP_DEFLATED) as zip_file:
         for relative in sorted(PLUGIN_FILES):
             data = (plugin / relative).read_bytes()
-            if relative == "mcp.json":
-                config = json.loads(data)
-                server = config["mcpServers"][manifest["name"]]
-                server["extensions"] = {"com.openai": {"auth": {
-                    "type": "oauth", "client": {"mode": "dcr"}, "resource": server["url"],
-                    "baseScopes": SCOPES, "defaultScopes": SCOPES,
-                }}}
-                data = (json.dumps(config, indent=2) + "\n").encode()
             entry = ZipInfo(relative, date_time=(2026, 1, 1, 0, 0, 0))
             entry.create_system = 3
             entry.external_attr = 0o100644 << 16

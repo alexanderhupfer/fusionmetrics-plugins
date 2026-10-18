@@ -1,0 +1,23 @@
+{
+  "purpose": "Manual OpenAI portal connection settings. Not a plugin manifest; do not include this file in the ZIP. Verify the actual consent screen before submission.",
+  "url": "https://fusionmetrics.com/api/mcp",
+  "auth": {
+    "type": "oauth",
+    "client": {
+      "mode": "dcr"
+    },
+    "resource": "https://fusionmetrics.com/api/mcp",
+    "baseScopes": [
+      "openid",
+      "user:org:read",
+      "setup:read",
+      "setup:write"
+    ],
+    "defaultScopes": [
+      "openid",
+      "user:org:read",
+      "setup:read",
+      "setup:write"
+    ]
+  }
+}
