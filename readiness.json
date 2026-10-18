@@ -18,8 +18,8 @@
     },
     {
       "id": "organization-permissions-and-revocation",
-      "status": "pending",
-      "evidence": "2026-10-18: Application tests cover identity, grant, Organization, admin and billing boundaries. Live MCP Inspector checks rejected analytics selection, app configuration, import retry and capture preparation using actual IDs from a different Organization, without revealing its records. Dedicated Codex refresh-token revocation returned 200 and subsequent refresh invalid_grant; an already-issued Clerk JWT remained valid until expiry, and normal reconnect succeeded. A live non-admin fixture remains untested."
+      "status": "verified",
+      "evidence": "2026-10-18: Application tests cover identity, grant, Organization, admin and billing boundaries. Live cross-Organization selection/configure/retry/capture checks rejected actual foreign IDs without revealing records. A separate org:member authenticated with the full five-scope grant: status returned canManage:false, analytics reads succeeded, and all eight setup/GA4 write tools returned HTTP 403 Organization admin access required. Its refresh grant was revoked and temporary identity removed; the original reviewer remains the sole administrator. Earlier dedicated Codex refresh revocation returned 200 then invalid_grant and reconnect succeeded. Issued Clerk JWTs can remain valid until expiry, as disclosed."
     },
     {
       "id": "tool-titles-and-annotations",
