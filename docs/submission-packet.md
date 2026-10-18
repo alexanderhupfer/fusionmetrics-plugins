@@ -37,7 +37,7 @@ Platform scope: validate Codex desktop and Claude Code desktop separately. Brows
 
 Use DCR with PKCE through the endpoint's authorization-server discovery. The requested scopes are `openid user:org:read setup:read setup:write analytics:read`; the resource is exactly `https://fusionmetrics.com/api/mcp`. Do not embed client secrets, bearer tokens, Partner account credentials, or Google keys in the package.
 
-Production preparation found that the resource metadata advertises `analytics:read`, but Clerk's authorization-server metadata does not. In the production Fusionmetrics Clerk application, add the advertised custom scope `analytics:read`, with a plain-language consent description covering prepared revenue, acquisition, Merchant contact, and review data. Verify the DCR policy allows it. Keep existing native setup defaults unchanged. Adding a scope is not evidence that an old grant has it: test fresh authorization and reauthorization in each client. Do not grant an assistant access to a real Partner Organization merely to test publication.
+On 18 October 2026, the production Fusionmetrics Clerk application was configured with the advertised custom scope `analytics:read` and explicit consent text covering prepared revenue, MRR, acquisition, Merchant contacts, and App Store reviews. Public authorization-server discovery now advertises all five requested scopes. Verify the actual DCR/client grant and preserve existing native setup defaults. Adding a scope is not evidence that an old grant has it: test fresh authorization and reauthorization in each client. Use the isolated review Organization for publication tests.
 
 The OpenAI ZIP embeds the documented auth extension. Repository/native manifests intentionally remain compatible with current clients; Claude pins scopes in `.claude-mcp.json`. Portal validation and actual native Codex consent remain required because the published portable MCP schema and current CLI disagree with the OpenAI extension. Do not fix this by broadening default permissions for unrelated clients.
 
@@ -80,11 +80,13 @@ The Claude portal also asks the publisher to attest that execution stays within 
 
 ## Reviewer account and test data
 
-Create a dedicated Organization named “Fusionmetrics Plugin Review” in the production Clerk application and corresponding hosted service. Use a reviewer identity with no membership in real Partner Organizations. Configure a supported sign-in path that reviewers can use without the founder supplying email codes or MFA. The human must enter/set the reviewer credential privately; store it in a password manager and the portal's protected reviewer field, never here.
+Reuse the existing iPhone App Review account and its dedicated fictional production Organization for both plugin reviews, live tests, and the demo, as requested by the publisher on 18 October 2026. The private iPhone review record documents two populated Apps, dashboards, reviews, Merchant history, an explicit lifetime access grant, and successful password-only sign-in. Keep the account identity and its existing password in 1Password and the portals' protected reviewer fields, outside this repository and ZIP. No new primary reviewer account or Organization is needed.
 
-Give the review Organization the service entitlement needed for setup and analytics. Do not create a real Stripe charge just to provision review access. Provision a separate non-admin reviewer in the same isolated Organization for permission tests, and a second isolated Organization for cross-Organization denial tests. Do not disable authentication or membership enforcement globally.
+Recheck that the account remains restricted to the fictional Organization, its access grant covers setup and analytics, and its role permits the configuration cases. Verify a fresh browser OAuth sign-in without founder-supplied email codes or MFA in each intended client; the previous iPhone sign-in is not evidence of plugin OAuth scopes or compatibility. Preserve the existing password, account-scoped sign-in configuration, and iPhone review baseline. Supply the same credentials privately when preparing the plugin reviewer fields.
 
-Prepare these resources through the normal supported import/data pipeline:
+Use a separate non-admin test identity in the same isolated Organization for permission tests, and a second isolated Organization for cross-Organization denial tests. These are negative-test fixtures, not replacement primary reviewer accounts. Revoke only the plugin test grant during revocation tests; preserve the iPhone review identity and its access. Do not create a real Stripe charge or disable authentication or membership enforcement globally.
+
+Inventory the existing fixtures against the following requirements. Reuse suitable prepared data and add missing test resources through the normal supported import/data pipeline in separate test Apps, preserving the two iPhone review Apps. The existing iPhone fixture has no Shopify credentials or scheduled imports; it does not establish live Shopify, GA4, or BigQuery coverage.
 
 | Resource | Required state and expected evidence |
 | --- | --- |

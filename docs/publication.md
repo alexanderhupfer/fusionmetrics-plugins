@@ -29,6 +29,8 @@ For a submission-readiness check, run `python3 scripts/validate.py --submission-
 
 Use the production endpoint `https://fusionmetrics.com/api/mcp` for a public listing. Staging packages and credentials remain isolated. A reviewer account needs seeded, non-personal data and sign-in that does not depend on the founder completing an OTP, MFA, or Google account challenge. Check the configured Clerk sign-in path; do not weaken authentication for existing Partners.
 
+Reuse the existing iPhone App Review account and fictional Organization, as specified in the submission packet. Keep its credentials private and preserve its iPhone review data and access. Verify current plugin OAuth and fixture coverage before marking reviewer readiness complete; prior native-app sign-in does not verify the plugin connection.
+
 ## Claude Code
 
 Submit from the Claude organization that should own the listings long term. The publishing account must have a paid plan and the required role. Connect a GitHub account with push access to this repository.

@@ -14,7 +14,7 @@
     {
       "id": "production-client-oauth-and-scopes",
       "status": "pending",
-      "evidence": "2026-10-18: resource discovery advertises analytics:read; Clerk production discovery omits it. DCR and PKCE S256 are advertised. The OpenAI ZIP now embeds the documented auth policy; portal acceptance and fresh/upgraded grants remain untested."
+      "evidence": "2026-10-18: production Clerk custom analytics:read scope created with explicit analytics/contact/review consent text and Advertised enabled. Public issuer discovery now advertises all five plugin scopes, DCR and PKCE S256. Portal acceptance and fresh/upgraded reviewer grants remain untested."
     },
     {
       "id": "organization-permissions-and-revocation",
@@ -29,7 +29,7 @@
     {
       "id": "reviewer-account-and-seeded-data",
       "status": "pending",
-      "evidence": "Provisioning and synthetic resource requirements are in docs/submission-packet.md. No dedicated reviewer account or populated production review Organization has been created."
+      "evidence": "2026-10-18: publisher selected the existing iPhone App Review account and fictional production Organization for reuse. The private iPhone review record documents two populated Apps, dashboards, reviews, Merchant history, lifetime access, and password-only sign-in verified on 2026-09-28; credentials remain in 1Password. Current membership/admin access, fresh plugin OAuth, analytics fixture coverage, and separate Shopify/GA4/BigQuery test resources still require verification. No new primary reviewer account is required."
     },
     {
       "id": "five-positive-three-negative-live-tests",
@@ -54,7 +54,7 @@
     {
       "id": "compatible-hosted-runtime",
       "status": "pending",
-      "evidence": "2026-10-18: production reports 64fbae913b39a230193475c790c423576ad270e5, which predates the candidate GA4 tools, legal pages and annotation changes. Compatible code is in the application feature branch; no deployment is claimed."
+      "evidence": "2026-10-18: application PR #153 merged as 3b233bf42d0c5373f65224a0a5d61d10729c9f5f after successful PR checks. Main CI run 39128644199 is in progress; production deployment and deployed-SHA verification remain pending."
     },
     {
       "id": "analytics-parity-and-migration",
