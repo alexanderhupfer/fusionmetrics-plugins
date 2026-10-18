@@ -1,5 +1,5 @@
 {
-  "purpose": "Manual OpenAI portal connection settings. Not a plugin manifest; do not include this file in the ZIP. Verify the actual consent screen before submission.",
+  "purpose": "Build input for the OpenAI submission ZIP's mcp.json OAuth extension. Not a native-client manifest. Verify portal validation and actual consent scopes before submission.",
   "url": "https://fusionmetrics.com/api/mcp",
   "auth": {
     "type": "oauth",
@@ -11,13 +11,15 @@
       "openid",
       "user:org:read",
       "setup:read",
-      "setup:write"
+      "setup:write",
+      "analytics:read"
     ],
     "defaultScopes": [
       "openid",
       "user:org:read",
       "setup:read",
-      "setup:write"
+      "setup:write",
+      "analytics:read"
     ]
   }
 }

@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fusionmetrics.com/schemas/shopify-listing-keyword-experiment.schema.json",
+  "title": "Shopify App Store organic keyword experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "skill_version",
+    "experiment_id",
+    "status",
+    "app",
+    "sources",
+    "historical_analysis",
+    "traffic_quality",
+    "hypothesis",
+    "change",
+    "publication",
+    "measurement",
+    "decision",
+    "restoration"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.1.0" },
+    "skill_version": { "const": "1.1.0" },
+    "experiment_id": { "type": "string", "minLength": 1 },
+    "status": {
+      "enum": [
+        "favorable_restored",
+        "mixed_restored",
+        "unfavorable_restored",
+        "inconclusive_restored"
+      ]
+    },
+    "app": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fusionmetrics_app_key",
+        "shopify_app_gid",
+        "shopify_app_numeric_id",
+        "name",
+        "locale"
+      ],
+      "properties": {
+        "fusionmetrics_app_key": { "type": "string", "minLength": 1 },
+        "shopify_app_gid": { "type": "string", "minLength": 1 },
+        "shopify_app_numeric_id": { "type": "string", "pattern": "^[0-9]+$" },
+        "shopify_partner_id": { "type": "string", "pattern": "^[0-9]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "locale": { "const": "en" }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["historical", "live_rank", "listing"],
+      "properties": {
+        "historical": { "const": "Fusion Metrics MCP" },
+        "live_rank": { "const": "Live Shopify App Store search" },
+        "listing": { "const": "Shopify Partner Admin listing editor" }
+      }
+    },
+    "historical_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["span", "dataset_generated_at", "target", "alternatives", "protected_terms", "limitations"],
+      "properties": {
+        "span": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["first_date", "last_date"],
+          "properties": {
+            "first_date": { "type": "string", "format": "date" },
+            "last_date": { "type": "string", "format": "date" }
+          }
+        },
+        "dataset_generated_at": { "type": "string", "format": "date-time" },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["term", "rationale", "evidence_summary"],
+          "properties": {
+            "term": { "type": "string", "minLength": 1 },
+            "rationale": { "type": "string", "minLength": 1 },
+            "evidence_summary": { "type": "string", "minLength": 1 }
+          }
+        },
+        "alternatives": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "protected_terms": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "traffic_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assessed_at",
+        "status",
+        "dimensions_available",
+        "bot_classification_available",
+        "suspicious_clusters",
+        "sensitivity",
+        "blanket_country_exclusion_applied",
+        "limitations"
+      ],
+      "properties": {
+        "assessed_at": { "type": "string", "format": "date-time" },
+        "status": { "enum": ["stable", "unstable", "unavailable"] },
+        "dimensions_available": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": ["country", "date", "surface", "search_term", "click", "install", "revenue", "historical_rank"]
+          }
+        },
+        "bot_classification_available": { "type": "boolean" },
+        "suspicious_clusters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "classification", "country", "first_date", "last_date", "surface_type", "evidence"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "classification": { "enum": ["suspected", "confirmed", "unknown"] },
+              "country": { "type": ["string", "null"] },
+              "first_date": { "type": ["string", "null"], "format": "date" },
+              "last_date": { "type": ["string", "null"], "format": "date" },
+              "surface_type": { "type": ["string", "null"] },
+              "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        },
+        "sensitivity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "performed",
+            "filter_description",
+            "target_changed",
+            "guardrails_changed",
+            "dominance_changed",
+            "max_traffic_share_change_pp",
+            "max_recency_lift_change_pp",
+            "conclusion"
+          ],
+          "properties": {
+            "performed": { "type": "boolean" },
+            "filter_description": { "type": ["string", "null"] },
+            "target_changed": { "type": ["boolean", "null"] },
+            "guardrails_changed": { "type": ["boolean", "null"] },
+            "dominance_changed": { "type": ["boolean", "null"] },
+            "max_traffic_share_change_pp": { "type": ["number", "null"], "minimum": 0 },
+            "max_recency_lift_change_pp": { "type": ["number", "null"], "minimum": 0 },
+            "conclusion": { "type": "string", "minLength": 1 }
+          }
+        },
+        "blanket_country_exclusion_applied": { "const": false },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "hypothesis": { "type": "string", "minLength": 1 },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "original", "variant", "character_limit"],
+      "properties": {
+        "field": {
+          "type": "string",
+          "pattern": "^(introduction|app_details|features\\.[0-9]+)$"
+        },
+        "original": {},
+        "variant": {},
+        "character_limit": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "admin_variant_verified", "checked_at", "public_value", "matches_variant_exactly", "note"],
+      "properties": {
+        "state": { "enum": ["public_verified", "not_public", "pending_review", "unknown"] },
+        "admin_variant_verified": { "type": "boolean" },
+        "checked_at": { "type": "string", "format": "date-time" },
+        "public_value": {},
+        "matches_variant_exactly": { "type": "boolean" },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["per_phase_query_limit", "terms", "before", "after"],
+      "properties": {
+        "per_phase_query_limit": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "terms": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["query", "role"],
+            "properties": {
+              "query": { "type": "string", "minLength": 1 },
+              "role": { "enum": ["target", "brand_guardrail", "guardrail"] }
+            }
+          }
+        },
+        "before": { "$ref": "#/$defs/measurements" },
+        "after": { "$ref": "#/$defs/measurements" }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification", "reason", "directional_only"],
+      "properties": {
+        "classification": { "enum": ["favorable", "mixed", "unfavorable", "inconclusive"] },
+        "reason": { "type": "string", "minLength": 1 },
+        "directional_only": { "const": true }
+      }
+    },
+    "restoration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "performed",
+        "admin_verified_at",
+        "restored_value",
+        "admin_matches_original_exactly",
+        "public_verified_at",
+        "public_value",
+        "public_matches_original_exactly"
+      ],
+      "properties": {
+        "performed": { "const": true },
+        "admin_verified_at": { "type": "string", "format": "date-time" },
+        "restored_value": {},
+        "admin_matches_original_exactly": { "const": true },
+        "public_verified_at": { "type": "string", "format": "date-time" },
+        "public_value": {},
+        "public_matches_original_exactly": { "const": true }
+      }
+    }
+  },
+  "$defs": {
+    "measurements": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "query",
+          "measured_at",
+          "absolute_position",
+          "organic_position",
+          "ads_before_app",
+          "first_page"
+        ],
+        "properties": {
+          "query": { "type": "string", "minLength": 1 },
+          "measured_at": { "type": "string", "format": "date-time" },
+          "search_id": { "type": ["string", "null"] },
+          "absolute_position": { "type": ["integer", "null"], "minimum": 1 },
+          "organic_position": { "type": ["integer", "null"], "minimum": 1 },
+          "ads_before_app": { "type": ["integer", "null"], "minimum": 0 },
+          "first_page": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

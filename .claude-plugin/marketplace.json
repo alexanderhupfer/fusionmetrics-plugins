@@ -1,6 +1,6 @@
 {
   "name": "fusionmetrics-plugins",
-  "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics.",
+  "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "owner": {
     "name": "Fusionmetrics"
   },
@@ -8,7 +8,7 @@
     {
       "name": "fusionmetrics",
       "source": "./plugins/fusionmetrics",
-      "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics."
+      "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics."
     }
   ]
 }

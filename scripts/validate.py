@@ -7,17 +7,23 @@ from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-SCOPES = ["openid", "user:org:read", "setup:read", "setup:write"]
+SCOPES = ["openid", "user:org:read", "setup:read", "setup:write", "analytics:read"]
+SKILLS = {"get-started", "analytics", "setup", "optimize-listing", "ga4-bigquery"}
 PLUGIN_FILES = {
     "plugin.json", "mcp.json", ".mcp.json", ".claude-mcp.json",
     ".codex-plugin/plugin.json", ".claude-plugin/plugin.json", ".cursor-plugin/plugin.json",
     "skills/setup/SKILL.md", "README.md", "SUPPORT.md", "LICENSE", "assets/logo.svg",
+    "skills/get-started/SKILL.md", "skills/analytics/SKILL.md", "skills/ga4-bigquery/SKILL.md",
+    "skills/ga4-bigquery/references/browser-setup.md", "skills/optimize-listing/SKILL.md",
+    "skills/optimize-listing/references/analytics.md", "skills/optimize-listing/references/traffic-quality.md",
+    "skills/optimize-listing/references/live-experiment.md", "skills/optimize-listing/references/listing-baseline.schema.json",
+    "skills/optimize-listing/references/experiment.schema.json", "skills/optimize-listing/scripts/validate_artifacts.py",
 }
 REPO_FILES = {
     ".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json",
     ".github/workflows/validate.yml", ".gitignore", "README.md", "LICENSE",
-    "docs/publication.md", "readiness.json", "openai-connection.json", "scripts/validate.py",
-    "scripts/package.py", "scripts/test_package.py",
+    "docs/publication.md", "docs/submission-packet.md", "readiness.json", "openai-connection.json", "scripts/validate.py",
+    "scripts/package.py", "scripts/test_package.py", "scripts/probe_public.py", "scripts/test_probe_public.py",
 }
 GATES = {
     "publisher-and-portal-access", "hosted-service-terms-and-privacy-review",
@@ -25,6 +31,7 @@ GATES = {
     "tool-titles-and-annotations", "reviewer-account-and-seeded-data",
     "five-positive-three-negative-live-tests", "review-demo-recording",
     "scanner-reachability-and-domain-verification", "claude-portal-validation-and-connector-pairing",
+    "compatible-hosted-runtime", "analytics-parity-and-migration", "listing-and-ga4-browser-workflows",
 }
 
 
@@ -102,6 +109,16 @@ def validate(root=ROOT, submission_ready=False):
     require(not any(tag.tag.split("}")[-1] in {"script", "foreignObject"} for tag in svg.iter()), "Executable SVG content")
     skill = (plugin / "skills/setup/SKILL.md").read_text()
     require(skill.startswith("---\nname: setup\ndescription: ") and "setup_get_instructions" in skill and "setup_get_status" in skill, "Invalid setup skill")
+    require(extension["onboardingSkill"] == "./skills/get-started/SKILL.md", "Invalid entry skill")
+    for skill_name in SKILLS:
+        directory = plugin / "skills" / skill_name
+        content = (directory / "SKILL.md").read_text()
+        require(content.startswith(f"---\nname: {skill_name}\ndescription: "), f"Invalid skill metadata: {skill_name}")
+        require("{{" not in content, f"Unresolved skill template: {skill_name}")
+        for reference in re.findall(r"\]\(([^)]+)\)", content):
+            if not urlsplit(reference).scheme and not reference.startswith("#"):
+                path = (directory / reference.split("#")[0]).resolve()
+                require(path.is_relative_to(plugin.resolve()) and path.is_file(), f"Broken skill reference: {skill_name}/{reference}")
     require(len(re.sub(r"```.*?```", "", (plugin / "README.md").read_text(), flags=re.S).split()) >= 40, "Plugin README needs at least 40 words")
     portable = read_json(plugin / "mcp.json")
     require(portable["$schema"] == "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json", "Invalid MCP schema")
@@ -114,7 +131,7 @@ def validate(root=ROOT, submission_ready=False):
     require(connection["url"] == endpoint and connection["auth"] == {
         "type": "oauth", "client": {"mode": "dcr"}, "resource": endpoint,
         "baseScopes": SCOPES, "defaultScopes": SCOPES,
-    }, "OpenAI submission connection settings differ from the setup-only scope policy")
+    }, "OpenAI submission connection settings differ from the full plugin scope policy")
     require(read_json(plugin / ".mcp.json") == {"mcpServers": {name: {"type": "http", "url": endpoint}}}, "Legacy MCP mismatch")
     require(read_json(plugin / ".claude-mcp.json") == {"mcpServers": {name: {"type": "http", "url": endpoint, "oauth": {"scopes": " ".join(SCOPES)}}}}, "Claude endpoint/scopes mismatch")
     for host in ("codex", "claude", "cursor"):

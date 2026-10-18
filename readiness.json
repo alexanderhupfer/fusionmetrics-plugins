@@ -1,15 +1,70 @@
 {
   "status": "preparation-only",
   "gates": [
-    { "id": "publisher-and-portal-access", "status": "pending", "evidence": "" },
-    { "id": "hosted-service-terms-and-privacy-review", "status": "pending", "evidence": "" },
-    { "id": "production-client-oauth-and-scopes", "status": "pending", "evidence": "" },
-    { "id": "organization-permissions-and-revocation", "status": "pending", "evidence": "" },
-    { "id": "tool-titles-and-annotations", "status": "pending", "evidence": "" },
-    { "id": "reviewer-account-and-seeded-data", "status": "pending", "evidence": "" },
-    { "id": "five-positive-three-negative-live-tests", "status": "pending", "evidence": "" },
-    { "id": "review-demo-recording", "status": "pending", "evidence": "" },
-    { "id": "scanner-reachability-and-domain-verification", "status": "pending", "evidence": "" },
-    { "id": "claude-portal-validation-and-connector-pairing", "status": "pending", "evidence": "" }
+    {
+      "id": "publisher-and-portal-access",
+      "status": "pending",
+      "evidence": "2026-10-18: OpenAI upload form is accessible and lists the AC App-commerce UG business identity. Claude publisher portal is accessible on the paid account. Final publisher ownership, project eligibility and GitHub connection still require portal validation."
+    },
+    {
+      "id": "hosted-service-terms-and-privacy-review",
+      "status": "pending",
+      "evidence": "2026-10-18: Terms and expanded hosted/agent privacy disclosure are prepared in the application feature branch. Public production content probes do not yet find these changes. No acceptance or policy attestation has been made."
+    },
+    {
+      "id": "production-client-oauth-and-scopes",
+      "status": "pending",
+      "evidence": "2026-10-18: resource discovery advertises analytics:read; Clerk production discovery omits it. DCR and PKCE S256 are advertised. The OpenAI ZIP now embeds the documented auth policy; portal acceptance and fresh/upgraded grants remain untested."
+    },
+    {
+      "id": "organization-permissions-and-revocation",
+      "status": "pending",
+      "evidence": "2026-10-18: focused application tests cover scope/admin/billing enforcement, Organization scoping and session identity/grant binding. Live reviewer reconnect/revocation and cross-Organization tests remain pending."
+    },
+    {
+      "id": "tool-titles-and-annotations",
+      "status": "pending",
+      "evidence": "2026-10-18: all 15 candidate tools have titles and explicit annotations, checked locally. Per-tool justifications are in docs/submission-packet.md. The production tool scan must match the deployed revision."
+    },
+    {
+      "id": "reviewer-account-and-seeded-data",
+      "status": "pending",
+      "evidence": "Provisioning and synthetic resource requirements are in docs/submission-packet.md. No dedicated reviewer account or populated production review Organization has been created."
+    },
+    {
+      "id": "five-positive-three-negative-live-tests",
+      "status": "pending",
+      "evidence": "10 positive and 8 negative proposed cases are packaged. Local tests are not live reviewer evidence; authenticated client execution is pending."
+    },
+    {
+      "id": "review-demo-recording",
+      "status": "pending",
+      "evidence": "Scene plan, capture precautions and required evidence are in docs/submission-packet.md. No live demo or reviewer-accessible recording URL exists yet."
+    },
+    {
+      "id": "scanner-reachability-and-domain-verification",
+      "status": "pending",
+      "evidence": "2026-10-18: public service/resource/issuer probes succeed and unauthenticated MCP returns 401 with resource metadata. Actual portal scanner reachability and the portal-issued domain challenge remain unverified."
+    },
+    {
+      "id": "claude-portal-validation-and-connector-pairing",
+      "status": "pending",
+      "evidence": "2026-10-18: the plugin source form is accessible. Local Claude manifest validation is available; no portal validation or paired connector submission is claimed."
+    },
+    {
+      "id": "compatible-hosted-runtime",
+      "status": "pending",
+      "evidence": "2026-10-18: production reports 64fbae913b39a230193475c790c423576ad270e5, which predates the candidate GA4 tools, legal pages and annotation changes. Compatible code is in the application feature branch; no deployment is claimed."
+    },
+    {
+      "id": "analytics-parity-and-migration",
+      "status": "pending",
+      "evidence": "2026-10-18: candidate analytics reuse the legacy implementation and tests compare the four tool schemas. The legacy endpoint remains. Live same-artifact result comparison and upgraded desktop grants are pending."
+    },
+    {
+      "id": "listing-and-ga4-browser-workflows",
+      "status": "pending",
+      "evidence": "Both permanent listing edits and reversible experiments are documented, with artifact validation. GA4 mapping/import adapters pass local tests. Authorized test-listing edits/restoration, real export/IAM configuration and completed acquisition imports remain untested."
+    }
   ]
 }

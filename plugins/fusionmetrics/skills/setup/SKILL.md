@@ -8,7 +8,7 @@ description: Set up Fusionmetrics for a Shopify app, resume its setup, or instal
 Use the bundled fusionmetrics MCP connection at https://fusionmetrics.com/api/mcp.
 
 1. Call setup_get_instructions and setup_get_status. Follow the current server instructions for app matching, billing confirmation, imports, and optional contact capture.
-2. If authentication is required, have the Partner sign in through the client's browser flow and select the intended Organization. Setup needs read and write access; analytics access is separate.
+2. If authentication is required, have the Partner sign in through the client's browser flow and select the intended Organization. The plugin also includes read-only analytics; setup writes require setup:write and Organization administrator access.
 3. Keep Partner API tokens and Shopify Client Secrets in Fusionmetrics' browser credential handoff. The app repository receives only the public snippet.
 4. Only mark local preparation complete after the app's required checks pass. Otherwise report the failed or blocked checks. Finish with the actual import and capture states, changed files, and local check results. A locally prepared snippet does not establish a live contact receipt. Leave commits and deployment to the Partner unless separately authorized by the human.
 

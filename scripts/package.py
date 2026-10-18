@@ -1,6 +1,7 @@
 """Build a deterministic OpenAI candidate ZIP. Never submit or release it."""
 import argparse
 import hashlib
+import json
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
@@ -10,6 +11,14 @@ from validate import PLUGIN_FILES, ROOT, validate
 def build(root=ROOT, submission_ready=False):
     root = Path(root)
     plugin, manifest, _ = validate(root, submission_ready)
+    # The publishing portal reads OAuth policy from the ZIP. Keep the repository's
+    # portable/native-client configuration unchanged: those clients do not all
+    # support OpenAI's documented per-server extension.
+    mcp = json.loads((plugin / "mcp.json").read_text())
+    connection = json.loads((root / "openai-connection.json").read_text())
+    mcp["mcpServers"][manifest["name"]]["extensions"] = {
+        "com.openai": {"auth": connection["auth"]}
+    }
     output = root / "dist"
     if output.is_symlink():
         raise ValueError("Output directory must not be a symlink")
@@ -20,6 +29,8 @@ def build(root=ROOT, submission_ready=False):
     with ZipFile(archive, "w", compression=ZIP_DEFLATED) as zip_file:
         for relative in sorted(PLUGIN_FILES):
             data = (plugin / relative).read_bytes()
+            if relative == "mcp.json":
+                data = (json.dumps(mcp, indent=2) + "\n").encode()
             entry = ZipInfo(relative, date_time=(2026, 1, 1, 0, 0, 0))
             entry.create_system = 3
             entry.external_attr = 0o100644 << 16
