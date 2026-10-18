@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fusionmetrics",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "author": {
     "name": "Fusionmetrics",
@@ -79,7 +79,7 @@
               "description": "Explain GA4 onboarding prerequisites from real connection status",
               "prompt": "Check GA4 and BigQuery readiness for Sprout Reviews and explain the next setup steps without changing any resources or asking me to connect a Google or Shopify account now.",
               "tools_triggered": "list_apps, ga4_get_status",
-              "expected_behavior": "Report the real saved mapping, credential and import state. In the unconnected demo baseline, explain the missing connection and the browser steps for tracking, daily export, dataset access, mapping and import verification. Distinguish advice from completed setup; do not create resources, grant IAM, save mappings or start imports."
+              "expected_behavior": "Report the real saved mapping, credential and import state. The demo has a synthetic BigQuery dataset imported into Sprout Reviews; this proves dataset access and acquisition import, not live Shopify tracking, a GA4 property or a daily Google export. Explain unverified provider stages and relevant next steps without diagnosing the fixed fixture dates as a broken export. Do not create resources, grant IAM, save mappings or start imports."
             }
           ],
           "negative": [
@@ -102,7 +102,7 @@
         }
       },
       "publication": {
-        "release_notes": "Includes existing MCP analytics, listing optimization, revenue setup and GA4/BigQuery onboarding. Version 0.2.3 aligns OpenAI OAuth registration with its account-email sign-in scope and includes five positive and three negative review cases using fictional demo data. Requires analytics reauthorization and the compatible hosted server."
+        "release_notes": "Includes existing MCP analytics, listing optimization, revenue setup and GA4/BigQuery onboarding. Version 0.2.4 distinguishes synthetic import evidence from live provider setup and keeps proposed listing copy within verified features. Includes five positive and three negative review cases using fictional demo data. Requires analytics reauthorization and the compatible hosted server."
       }
     }
   }

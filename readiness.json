@@ -9,32 +9,32 @@
     {
       "id": "hosted-service-terms-and-privacy-review",
       "status": "pending",
-      "evidence": "2026-10-18: Terms and expanded hosted/agent privacy disclosure are included in merged application release 3b233bf. Staging serves both intended pages with HTTP 200 and the expected content. Production rollout is waiting for an existing import; production content verification and final publisher policy attestations remain pending."
+      "evidence": "2026-10-18: Terms and expanded privacy disclosure deployed at 3b233bf. PR #155 corrects revocation wording: refresh is revoked immediately, but issued Clerk JWTs can last up to 24 hours. Its main CI passed; production rollout and final publisher legal attestations remain pending."
     },
     {
       "id": "production-client-oauth-and-scopes",
       "status": "pending",
-      "evidence": "2026-10-18: Native Codex DCR and Claude Code CIMD login both completed for the dedicated fictional reviewer Organization with all five intended scopes. Clerk analytics:read is advertised and allowed for fresh dynamic-client consent. OpenAI OIDC also requires account email; candidate 0.2.3 declares it explicitly, and portal authorization succeeds. Defaults remain setup-only. Upgraded existing grants and revocation remain to test."
+      "evidence": "2026-10-18: Native Codex DCR and Claude Code CIMD grants have all five Fusionmetrics scopes. OpenAI DCR/OIDC succeeds with the additional account-email scope. Claude web followed the initial challenge and received only 11 setup tools; merged PR #155 fixes the challenge to include analytics. Deploy and reauthorize that generic client before marking verified."
     },
     {
       "id": "organization-permissions-and-revocation",
       "status": "pending",
-      "evidence": "2026-10-18: focused application tests cover scope/admin/billing enforcement, Organization scoping and session identity/grant binding. Live reviewer reconnect/revocation and cross-Organization tests remain pending."
+      "evidence": "2026-10-18: Focused application tests cover identity, grant, Organization, admin and billing boundaries. Revoking the dedicated Codex refresh token returned 200, and subsequent refresh returned invalid_grant. The issued access JWT remained accepted, matching Clerk limitations; normal Codex reconnect succeeded. Live non-admin and cross-Organization fixtures remain untested."
     },
     {
       "id": "tool-titles-and-annotations",
-      "status": "pending",
-      "evidence": "2026-10-18: all 15 candidate tools have titles and explicit annotations, checked locally. Per-tool justifications are in docs/submission-packet.md. The production tool scan must match the deployed revision."
+      "status": "verified",
+      "evidence": "2026-10-18: Production at 3b233bf exposes all 15 tools with expected titles and annotations. The authenticated protocol probe passed and OpenAI rescan captured all 15. The portal flags setup_request_credential_entry for further human review; no annotation mismatch was found."
     },
     {
       "id": "reviewer-account-and-seeded-data",
       "status": "pending",
-      "evidence": "2026-10-18: Existing iPhone reviewer email/password sign-in succeeded without MFA/email codes. Credentials were entered privately into OpenAI and Claude drafts. Added web-compatible artifacts to the fictional dashboards, preserving original MRR and dates; actual browser engine loaded all three, and live Sprout shows USD 8,240 for Aug 30\u2013Sep 28. Native client grants select only the fictional Organization. Full GA4/write-tool fixtures and coverage remain incomplete; no real Partner credentials/data were shared."
+      "evidence": "2026-10-18: Reused iPhone reviewer signs in without MFA, is limited to one fictional Organization, and has administrator/lifetime access. Three dashboards load and preserve their fixed MRR. Synthetic BigQuery mapping/import completed with 20 views, six add-app clicks and four installs. Reviewer setup-write coverage remains incomplete; no real Partner credentials/data were shared."
     },
     {
       "id": "five-positive-three-negative-live-tests",
-      "status": "pending",
-      "evidence": "2026-10-18: Reviewer protocol probe through a normal native OAuth grant passed Organization identity, App availability/selection, schema and fixed-period MRR on the old production runtime. Full tool annotations/GA4 checks await deployment. Exactly five positive and three negative assistant cases remain unexecuted; operator probes do not substitute for assistant behavior."
+      "status": "verified",
+      "evidence": "2026-10-18: All five positive and three negative cases passed in native Codex CLI and Claude Code with actual bundled plugin skills and dedicated reviewer OAuth. Codex ran 0.2.4; Claude ran six cases on 0.2.3 and passed focused reruns of changed listing/GA4 skills on 0.2.4. Read-only MCP allowlists bounded these conversational tests; they do not establish setup-write, browser-install or server-authorization coverage. Private transcripts/evaluations retained. Authenticated operator probe separately passed 13/13 checks."
     },
     {
       "id": "review-demo-recording",
@@ -44,17 +44,17 @@
     {
       "id": "scanner-reachability-and-domain-verification",
       "status": "pending",
-      "evidence": "2026-10-18: OpenAI 0.2.3 package passed all five skill scans and reviewer OAuth succeeds. Scanner discovered the old runtime's 12 tools; repeat after deployment for the required 15. Portal-issued domain challenge merged through application PR #154 after CI passed (7ac3bd3a717fcc0d209a4423d0639fe64e4edc90); main CI passed, deployment is queued behind the active release. Domain not yet verified."
+      "evidence": "2026-10-18: OpenAI accepted the 0.2.4 ZIP as an unsubmitted draft and is scanning its skills. Reviewer OAuth succeeds; existing MCP scan sees all 15 deployed tools. Domain challenge PR #154 passed main/heavy/staging checks, and production deploy is draining an existing import. Domain verification remains pending."
     },
     {
       "id": "claude-portal-validation-and-connector-pairing",
       "status": "pending",
-      "evidence": "2026-10-18: Claude portal passed all seven source/directory checks for 695987b (five skills, one MCP server, four informational URL warnings). GitHub ownership connection is resolved. The separate connector draft has listing, use cases, company, authentication and review instructions filled; the portal reports it is saved in this browser tab. Captured tools, final reviewer credentials/tests, compliance and pairing remain pending. Later evidence-only commits require source revalidation before submission."
+      "evidence": "2026-10-18: All seven source checks passed for plugin commit 9546c4b, with four informational URL warnings. Connector draft authenticated the reviewer but captured only 11 setup tools because of the initial-scope challenge. Reauthorize after PR #155, validate the final candidate commit and complete supported policy/pairing fields. Drafts are unsubmitted."
     },
     {
       "id": "compatible-hosted-runtime",
       "status": "pending",
-      "evidence": "2026-10-18: PR #153 merged as 3b233bf and passed main/heavy/staging gates. Production deployment 39129284013 is draining a healthy existing import, not completed. PR #154 domain challenge merged as 7ac3bd3, passed main CI, deployment 39138502488 queued. Public production still serves 64fbae...; exact target verification remains pending."
+      "evidence": "2026-10-18: PR #153 deployed successfully as 3b233bf and live authenticated analytics/GA4 tests passed. PR #154 domain verification and PR #155 generic full-scope challenge are merged and passed CI; their production releases remain in progress/queued. Verify the final deployed revision before release."
     },
     {
       "id": "analytics-parity-and-migration",
@@ -64,7 +64,7 @@
     {
       "id": "listing-and-ga4-browser-workflows",
       "status": "pending",
-      "evidence": "Both permanent listing edits and reversible experiments are documented, with artifact validation. GA4 mapping/import adapters pass local tests. Authorized test-listing edits/restoration, real export/IAM configuration and completed acquisition imports remain untested. Reviewer copy recommendations and status inspection require no provider login. Publisher tests of actual Shopify/Google mutations still require an explicitly authorized target; if unavailable, record blocked rather than treating seeded data or a recording as successful live execution."
+      "evidence": "2026-10-18: Authorized Audience-Push draft subtitle saved, reloaded, restored exactly and reloaded again without publication. Reviewer synthetic BigQuery mapping validated through UI/MCP; empty dataset rejection preserved the valid mapping; acquisition import completed and totals reconciled. Real GA4 property/export/IAM onboarding, live Partner API import and public listing experiments remain unverified. No real data was added to the shared reviewer Organization."
     }
   ]
 }
