@@ -7,7 +7,7 @@ import unittest
 from zipfile import ZipFile
 
 from package import build
-from validate import PLUGIN_FILES, ROOT, SCOPES, validate
+from validate import OPENAI_SCOPES, PLUGIN_FILES, ROOT, validate
 
 
 class DistributionTests(unittest.TestCase):
@@ -30,8 +30,8 @@ class DistributionTests(unittest.TestCase):
             auth = json.loads((self.root / "openai-connection.json").read_text())["auth"]
             self.assertEqual(server.pop("extensions"), {"com.openai": {"auth": auth}})
             self.assertEqual(server, json.loads((self.plugin / "mcp.json").read_text())["mcpServers"][self.manifest["name"]])
-            self.assertEqual(auth["baseScopes"], SCOPES)
-            self.assertEqual(auth["defaultScopes"], SCOPES)
+            self.assertEqual(auth["baseScopes"], OPENAI_SCOPES)
+            self.assertEqual(auth["defaultScopes"], OPENAI_SCOPES)
             self.assertEqual(auth["resource"], server["url"])
         source = json.loads((self.plugin / "mcp.json").read_text())
         self.assertNotIn("extensions", source["mcpServers"][self.manifest["name"]])

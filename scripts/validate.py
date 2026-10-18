@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SCOPES = ["openid", "user:org:read", "setup:read", "setup:write", "analytics:read"]
+OPENAI_SCOPES = ["openid", "email", *SCOPES[1:]]
 SKILLS = {"get-started", "analytics", "setup", "optimize-listing", "ga4-bigquery"}
 PLUGIN_FILES = {
     "plugin.json", "mcp.json", ".mcp.json", ".claude-mcp.json",
@@ -130,8 +131,8 @@ def validate(root=ROOT, submission_ready=False):
     require(server == {"type": "streamable-http", "url": endpoint}, "Portable MCP config must remain URL-only")
     connection = read_json(root / "openai-connection.json")
     require(connection["url"] == endpoint and connection["auth"] == {
-        "type": "oauth", "client": {"mode": "dcr"}, "resource": endpoint,
-        "baseScopes": SCOPES, "defaultScopes": SCOPES,
+        "type": "oauth", "client": {"mode": "dcr"}, "resource": endpoint, "oidcEnabled": True,
+        "baseScopes": OPENAI_SCOPES, "defaultScopes": OPENAI_SCOPES,
     }, "OpenAI submission connection settings differ from the full plugin scope policy")
     require(read_json(plugin / ".mcp.json") == {"mcpServers": {name: {"type": "http", "url": endpoint}}}, "Legacy MCP mismatch")
     require(read_json(plugin / ".claude-mcp.json") == {"mcpServers": {name: {"type": "http", "url": endpoint, "oauth": {"scopes": " ".join(SCOPES)}}}}, "Claude endpoint/scopes mismatch")

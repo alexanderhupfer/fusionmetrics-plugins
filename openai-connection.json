@@ -7,8 +7,10 @@
       "mode": "dcr"
     },
     "resource": "https://fusionmetrics.com/api/mcp",
+    "oidcEnabled": true,
     "baseScopes": [
       "openid",
+      "email",
       "user:org:read",
       "setup:read",
       "setup:write",
@@ -16,6 +18,7 @@
     ],
     "defaultScopes": [
       "openid",
+      "email",
       "user:org:read",
       "setup:read",
       "setup:write",

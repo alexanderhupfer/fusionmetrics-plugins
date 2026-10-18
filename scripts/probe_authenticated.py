@@ -84,6 +84,7 @@ class Client:
     def __init__(self, origin, token):
         self.origin, self.token, self.session, self.sequence = origin, token, None, 0
         self.opener = build_opener(NoRedirect())
+        self.opener.addheaders = [("User-Agent", "Fusionmetrics-Plugin-Readiness/0.2.3")]
 
     def exchange(self, method, params=None, notification=False, http_method="POST"):
         self.sequence += 1
@@ -117,7 +118,7 @@ class Client:
 
     def start(self):
         result = self.exchange("initialize", {"protocolVersion": PROTOCOL, "capabilities": {},
-            "clientInfo": {"name": "fusionmetrics-review-probe", "version": "0.2.1"}})
+            "clientInfo": {"name": "fusionmetrics-review-probe", "version": "0.2.3"}})
         if not self.session:
             raise ValueError("Server did not create an MCP session.")
         self.exchange("notifications/initialized", notification=True)

@@ -8,7 +8,7 @@ The [Fusionmetrics plugin](./plugins/fusionmetrics/README.md) connects to https:
 
 The marketplace catalogs support development and testing. Availability of custom marketplaces varies by client. In Claude Code desktop, open Plugins and add this repository as a marketplace, then install Fusionmetrics. Codex supports repo marketplaces for local testing; the public no-command install button requires an approved directory listing. See the official client documentation linked in the publication guide.
 
-Version 0.2.1 requires analytics authorization and the matching hosted GA4 tools. Keep the existing analytics connection until the replacement passes client validation. This candidate does not retire the legacy endpoint.
+Version 0.2.3 requires analytics authorization and the matching hosted GA4 tools. Keep the existing analytics connection until the replacement passes client validation. This candidate does not retire the legacy endpoint.
 
 Maintainers: run python3 scripts/validate.py and python3 scripts/package.py. These commands validate and build a ZIP locally. They do not submit or publish a listing. CI uploads the same candidate as a build artifact.
 

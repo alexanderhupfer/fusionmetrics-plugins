@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fusionmetrics",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "author": {
     "name": "Fusionmetrics",
@@ -102,7 +102,7 @@
         }
       },
       "publication": {
-        "release_notes": "Includes existing MCP analytics, listing optimization, revenue setup and GA4/BigQuery onboarding. Version 0.2.1 supplies exactly five positive and three negative review cases that use the populated demo account without Shopify Partner login; broader publisher tests remain separate. Requires analytics reauthorization and the compatible hosted server."
+        "release_notes": "Includes existing MCP analytics, listing optimization, revenue setup and GA4/BigQuery onboarding. Version 0.2.3 aligns OpenAI OAuth registration with its account-email sign-in scope and includes five positive and three negative review cases using fictional demo data. Requires analytics reauthorization and the compatible hosted server."
       }
     }
   }

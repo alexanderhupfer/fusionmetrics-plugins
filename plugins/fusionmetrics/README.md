@@ -1,6 +1,6 @@
 # Fusionmetrics
 
-Version 0.2.1. Endpoint: https://fusionmetrics.com/api/mcp.
+Version 0.2.3. Endpoint: https://fusionmetrics.com/api/mcp.
 
 Analyze Shopify app revenue, MRR, churn, trials, Merchant activity and available contacts, reviews, and acquisition attribution using the existing read-only Fusionmetrics MCP tools. Optimize Shopify App Store listings with prepared traffic and revenue evidence and authorized browser edits. Set up revenue imports and GA4/BigQuery acquisition data: inspect connection status, validate and save a dataset mapping, and start imports. Google property/export/IAM configuration and Shopify listing changes use your signed-in browser and require authorization. Credentials stay in browser forms. Optional Merchant contact capture supports Shopify's official React Router template and requires local repository access and separate deployment. The plugin requests analytics read and setup read/write permissions; setup writes require an Organization administrator. A Fusionmetrics account and eligible service plan are required. Existing MCP connections remain available during migration.
 
@@ -13,3 +13,5 @@ This is a publication candidate. The new GA4 tools require the matching hosted s
 [Support](./SUPPORT.md) · [Privacy](https://fusionmetrics.com/privacy)
 
 MIT applies to the files in this plugin package. It does not license the Fusionmetrics application or replace hosted service terms.
+
+OpenAI directory connections also request your account email for sign-in. Native Codex and Claude Code use the five Fusionmetrics identity, Organization, setup and analytics scopes. All clients require consent for the selected Organization.

@@ -10,6 +10,6 @@ Analytics uses Fusionmetrics' prepared data. A missing dataset or GA4 export can
 
 Optional contact capture supports Shopify's official React Router app template; analytics and listing optimization do not require that template. Other capture frameworks require separate evaluation. Local checks confirm code preparation; a deployed app must receive a real contact before contact capture can be reported as working.
 
-Version 0.2.1 needs the matching hosted GA4 tools. Keep the existing analytics connection until the full plugin is verified in the intended client. The legacy endpoint remains available during migration.
+Version 0.2.3 needs the matching hosted GA4 tools. Keep the existing analytics connection until the full plugin is verified in the intended client. The legacy endpoint remains available during migration.
 
 [Setup guide](https://fusionmetrics.com/agent-setup) · [Privacy policy](https://fusionmetrics.com/privacy)

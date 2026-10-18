@@ -1,6 +1,6 @@
 # Fusionmetrics submission packet
 
-Prepared 18 October 2026 for version 0.2.1. This document contains proposed listing answers and an execution plan. It does not certify deployment, completed reviewer tests, legal approval, or directory acceptance. Keep reviewer passwords, private account identifiers, OAuth tokens, and unredacted recordings outside this public repository.
+Prepared 18 October 2026 for version 0.2.3. This document contains proposed listing answers and an execution plan. It does not certify deployment, completed reviewer tests, legal approval, or directory acceptance. Keep reviewer passwords, private account identifiers, OAuth tokens, and unredacted recordings outside this public repository.
 
 ## Listing fields
 
@@ -158,3 +158,5 @@ Show both intended clients, or supply separately labelled recordings. Capture th
 7. Stop before either final Submit button. Submission and later public listing publication require the user's instruction. After approval, update onboarding with the actual directory links; do not invent them or remove the legacy MCP connection prematurely.
 
 Sources and compatibility notes are maintained in [publication.md](./publication.md).
+
+OpenAI's portal requests the account `email` identity scope as part of its OIDC flow. The OpenAI ZIP explicitly declares that scope alongside the five Fusionmetrics permissions, so DCR registration and authorization agree. Clerk allows it only through fresh consent; setup-only defaults are unchanged. Native Codex and Claude Code retain the five original scopes. The email identity scope identifies the signed-in account; it does not grant mail access.

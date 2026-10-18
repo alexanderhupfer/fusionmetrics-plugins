@@ -3,8 +3,8 @@
   "gates": [
     {
       "id": "publisher-and-portal-access",
-      "status": "pending",
-      "evidence": "2026-10-18: OpenAI upload form is accessible and lists the AC App-commerce UG business identity. Claude publisher portal is accessible on the paid account, and the publishing Organization is connected to the repository owner GitHub identity. OpenAI package upload and final project eligibility remain unverified."
+      "status": "verified",
+      "evidence": "2026-10-18: OpenAI accepted the ZIP into an unsubmitted business-identity draft and passed all five skill scans. Claude publisher portal is accessible, GitHub ownership is connected, and all seven source checks passed on the previous candidate. Neither directory submission nor legal attestations have been performed."
     },
     {
       "id": "hosted-service-terms-and-privacy-review",
@@ -14,7 +14,7 @@
     {
       "id": "production-client-oauth-and-scopes",
       "status": "pending",
-      "evidence": "2026-10-18: production Clerk custom analytics:read scope created with explicit analytics/contact/review consent text and Advertised enabled. Public issuer discovery now advertises all five plugin scopes, DCR and PKCE S256. Portal acceptance and fresh/upgraded reviewer grants remain untested."
+      "evidence": "2026-10-18: Native Codex DCR and Claude Code CIMD login both completed for the dedicated fictional reviewer Organization with all five intended scopes. Clerk analytics:read is advertised and allowed for fresh dynamic-client consent. OpenAI OIDC also requires account email; candidate 0.2.3 declares it explicitly, and portal authorization succeeds. Defaults remain setup-only. Upgraded existing grants and revocation remain to test."
     },
     {
       "id": "organization-permissions-and-revocation",
@@ -29,12 +29,12 @@
     {
       "id": "reviewer-account-and-seeded-data",
       "status": "pending",
-      "evidence": "2026-10-18: read-only production DB/Clerk audit verified the reused iPhone reviewer has one active fictional Organization, administrator membership, lifetime access, password sign-in, no MFA and no other Organization membership. The two App dashboards and aggregate exist. Sprout Reviews loads in the analytics engine with 30 range-metric/revenue rows, three Merchant summaries and six timeline rows for 2026-08-30 through 2026-09-28. No Partner profiles, BigQuery credentials, GA4 mappings or scheduled refreshes exist. Reviewer plugin OAuth and separate live setup/acquisition fixtures remain pending; 1Password is locked. No password or iPhone baseline changed. The packaged sample-data cases require only Fusionmetrics sign-in. Shopify integration tests are publisher responsibilities; no Shopify Partner login or real Partner account will be shared with reviewers. Exposed write-tool review coverage remains unresolved."
+      "evidence": "2026-10-18: Existing iPhone reviewer email/password sign-in succeeded without MFA/email codes. Credentials were entered privately into OpenAI and Claude drafts. Added web-compatible artifacts to the fictional dashboards, preserving original MRR and dates; actual browser engine loaded all three, and live Sprout shows USD 8,240 for Aug 30\u2013Sep 28. Native client grants select only the fictional Organization. Full GA4/write-tool fixtures and coverage remain incomplete; no real Partner credentials/data were shared."
     },
     {
       "id": "five-positive-three-negative-live-tests",
       "status": "pending",
-      "evidence": "2026-10-18: exactly five positive and three negative cases are packaged for the existing Fusionmetrics demo account without Shopify Partner or Google login. The broader ten-positive/eight-negative publisher regression scenarios are preserved in docs/extended-test-cases.json outside the ZIP. No authenticated probe or assistant cases have run. The operator probe and local guard tests do not establish live reviewer coverage."
+      "evidence": "2026-10-18: Reviewer protocol probe through a normal native OAuth grant passed Organization identity, App availability/selection, schema and fixed-period MRR on the old production runtime. Full tool annotations/GA4 checks await deployment. Exactly five positive and three negative assistant cases remain unexecuted; operator probes do not substitute for assistant behavior."
     },
     {
       "id": "review-demo-recording",
@@ -44,7 +44,7 @@
     {
       "id": "scanner-reachability-and-domain-verification",
       "status": "pending",
-      "evidence": "2026-10-18: Claude reached the production MCP endpoint (401), protected-resource metadata (200) and authorization-server discovery (200) during connector setup. Public probes also succeed. No authenticated tool scan yet. OpenAI ZIP upload and the portal-issued domain challenge remain pending."
+      "evidence": "2026-10-18: OpenAI 0.2.3 package passed all five skill scans and reviewer OAuth succeeds. Scanner discovered the old runtime's 12 tools; repeat after deployment for the required 15. Portal-issued domain challenge merged through application PR #154 after CI passed (7ac3bd3a717fcc0d209a4423d0639fe64e4edc90); main CI passed, deployment is queued behind the active release. Domain not yet verified."
     },
     {
       "id": "claude-portal-validation-and-connector-pairing",
@@ -54,7 +54,7 @@
     {
       "id": "compatible-hosted-runtime",
       "status": "pending",
-      "evidence": "2026-10-18: application PR #153 merged as 3b233bf42d0c5373f65224a0a5d61d10729c9f5f. Main CI run 39128644199 and the heavy pipeline gate passed. Deployment run 39129284013 deployed and verified this exact SHA in staging. Production rollout is waiting for one active import to drain normally; production deployed-SHA verification remains pending."
+      "evidence": "2026-10-18: PR #153 merged as 3b233bf and passed main/heavy/staging gates. Production deployment 39129284013 is draining a healthy existing import, not completed. PR #154 domain challenge merged as 7ac3bd3, passed main CI, deployment 39138502488 queued. Public production still serves 64fbae...; exact target verification remains pending."
     },
     {
       "id": "analytics-parity-and-migration",
