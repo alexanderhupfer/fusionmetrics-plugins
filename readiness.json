@@ -4,7 +4,7 @@
     {
       "id": "publisher-and-portal-access",
       "status": "pending",
-      "evidence": "2026-10-18: OpenAI upload form is accessible and lists the AC App-commerce UG business identity. Claude publisher portal is accessible on the paid account. Final publisher ownership, project eligibility and GitHub connection still require portal validation."
+      "evidence": "2026-10-18: OpenAI upload form is accessible and lists the AC App-commerce UG business identity. Claude publisher portal is accessible on the paid account, and the publishing Organization is connected to the repository owner GitHub identity. OpenAI package upload and final project eligibility remain unverified."
     },
     {
       "id": "hosted-service-terms-and-privacy-review",
@@ -29,12 +29,12 @@
     {
       "id": "reviewer-account-and-seeded-data",
       "status": "pending",
-      "evidence": "2026-10-18: publisher selected the existing iPhone App Review account and fictional production Organization for reuse. The private iPhone review record documents two populated Apps, dashboards, reviews, Merchant history, lifetime access, and password-only sign-in verified on 2026-09-28; credentials remain in 1Password. Current membership/admin access, fresh plugin OAuth, analytics fixture coverage, and separate Shopify/GA4/BigQuery test resources still require verification. No new primary reviewer account is required."
+      "evidence": "2026-10-18: read-only production DB/Clerk audit verified the reused iPhone reviewer has one active fictional Organization, administrator membership, lifetime access, password sign-in, no MFA and no other Organization membership. The two App dashboards and aggregate exist. Sprout Reviews loads in the analytics engine with 30 range-metric/revenue rows, three Merchant summaries and six timeline rows for 2026-08-30 through 2026-09-28. No Partner profiles, BigQuery credentials, GA4 mappings or scheduled refreshes exist. Reviewer plugin OAuth and separate live setup/acquisition fixtures remain pending; 1Password is locked. No password or iPhone baseline changed."
     },
     {
       "id": "five-positive-three-negative-live-tests",
       "status": "pending",
-      "evidence": "10 positive and 8 negative proposed cases are packaged. Local tests are not live reviewer evidence; authenticated client execution is pending."
+      "evidence": "10 positive and eight negative assistant cases are packaged. An authenticated operator probe now verifies reviewer isolation, 15 tool annotations, fixture totals, status reads and SQL/app rejection cases; its six guard tests pass. No reviewer OAuth token was obtained and no authenticated probe or assistant cases have run. Operator protocol checks are separate from actual client/assistant evidence."
     },
     {
       "id": "review-demo-recording",
@@ -44,17 +44,17 @@
     {
       "id": "scanner-reachability-and-domain-verification",
       "status": "pending",
-      "evidence": "2026-10-18: public service/resource/issuer probes succeed and unauthenticated MCP returns 401 with resource metadata. Actual portal scanner reachability and the portal-issued domain challenge remain unverified."
+      "evidence": "2026-10-18: Claude reached the production MCP endpoint (401), protected-resource metadata (200) and authorization-server discovery (200) during connector setup. Public probes also succeed. No authenticated tool scan yet. OpenAI ZIP upload and the portal-issued domain challenge remain pending."
     },
     {
       "id": "claude-portal-validation-and-connector-pairing",
       "status": "pending",
-      "evidence": "2026-10-18: Claude portal passed all 7 source/directory checks for aa769ed (5 skills, 1 MCP server). The portal blocks submission until GitHub is connected to the publishing Claude Organization. Explicit privacy/support/documentation/terms links were added after that scan and require revalidation. MCP connector pairing remains pending."
+      "evidence": "2026-10-18: Claude portal passed all seven source/directory checks for 1df1a48 (five skills, one MCP server, four informational URL warnings). GitHub ownership connection is resolved. The separate connector draft has listing, use cases, company, authentication and review instructions filled; the portal reports it is saved in this browser tab. Captured tools, final reviewer credentials/tests, compliance and pairing remain pending. Revalidate after later source commits."
     },
     {
       "id": "compatible-hosted-runtime",
       "status": "pending",
-      "evidence": "2026-10-18: application PR #153 merged as 3b233bf42d0c5373f65224a0a5d61d10729c9f5f after successful PR checks. Main CI run 39128644199 is in progress; production deployment and deployed-SHA verification remain pending."
+      "evidence": "2026-10-18: application PR #153 merged as 3b233bf42d0c5373f65224a0a5d61d10729c9f5f. Main CI run 39128644199 passed. Deployment run 39129284013 passed its heavy pipeline gate and is validating staging; production deployment and deployed-SHA verification remain pending."
     },
     {
       "id": "analytics-parity-and-migration",

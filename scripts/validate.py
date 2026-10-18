@@ -24,6 +24,7 @@ REPO_FILES = {
     ".github/workflows/validate.yml", ".gitignore", "README.md", "LICENSE",
     "docs/publication.md", "docs/submission-packet.md", "readiness.json", "openai-connection.json", "scripts/validate.py",
     "scripts/package.py", "scripts/test_package.py", "scripts/probe_public.py", "scripts/test_probe_public.py",
+    "scripts/probe_authenticated.py", "scripts/test_probe_authenticated.py",
 }
 GATES = {
     "publisher-and-portal-access", "hosted-service-terms-and-privacy-review",
