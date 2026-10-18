@@ -142,6 +142,11 @@ def validate(root=ROOT, submission_ready=False):
         local_reference(plugin, compatibility["mcpServers"])
         expected = "./.claude-mcp.json" if host == "claude" else "./.mcp.json"
         require(compatibility["mcpServers"] == expected, f"Wrong MCP file for {host}")
+        if host == "claude":
+            for field in ("privacyPolicyUrl", "supportUrl", "documentationUrl"):
+                public_url(compatibility.get(field, ""))
+            require(compatibility["privacyPolicyUrl"] == interface["privacyPolicyURL"], "Claude privacy policy differs")
+            require(compatibility.get("termsOfServiceUrl") == interface.get("termsOfServiceURL"), "Claude service terms differ")
     cases = extension["review"]["test_cases"]
     require(len(cases["positive"]) >= 5 and len(cases["negative"]) >= 3, "Need five positive and three negative review cases")
     readiness = read_json(root / "readiness.json")

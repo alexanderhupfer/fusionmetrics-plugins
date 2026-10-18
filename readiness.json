@@ -49,7 +49,7 @@
     {
       "id": "claude-portal-validation-and-connector-pairing",
       "status": "pending",
-      "evidence": "2026-10-18: the plugin source form is accessible. Local Claude manifest validation is available; no portal validation or paired connector submission is claimed."
+      "evidence": "2026-10-18: Claude portal passed all 7 source/directory checks for aa769ed (5 skills, 1 MCP server). The portal blocks submission until GitHub is connected to the publishing Claude Organization. Explicit privacy/support/documentation/terms links were added after that scan and require revalidation. MCP connector pairing remains pending."
     },
     {
       "id": "compatible-hosted-runtime",
