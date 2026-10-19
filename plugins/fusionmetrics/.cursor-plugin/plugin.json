@@ -1,7 +1,7 @@
 {
   "name": "fusionmetrics",
-  "version": "0.1.0",
-  "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics.",
+  "version": "0.2.5",
+  "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "author": {
     "name": "Fusionmetrics",
     "email": "alex@fusionmetrics.com",
@@ -12,8 +12,11 @@
   "license": "MIT",
   "keywords": [
     "shopify",
+    "analytics",
     "revenue",
-    "setup"
+    "listing-optimization",
+    "ga4",
+    "bigquery"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"

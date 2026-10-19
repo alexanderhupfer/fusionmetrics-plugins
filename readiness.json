@@ -1,15 +1,70 @@
 {
   "status": "preparation-only",
   "gates": [
-    { "id": "publisher-and-portal-access", "status": "pending", "evidence": "" },
-    { "id": "hosted-service-terms-and-privacy-review", "status": "pending", "evidence": "" },
-    { "id": "production-client-oauth-and-scopes", "status": "pending", "evidence": "" },
-    { "id": "organization-permissions-and-revocation", "status": "pending", "evidence": "" },
-    { "id": "tool-titles-and-annotations", "status": "pending", "evidence": "" },
-    { "id": "reviewer-account-and-seeded-data", "status": "pending", "evidence": "" },
-    { "id": "five-positive-three-negative-live-tests", "status": "pending", "evidence": "" },
-    { "id": "review-demo-recording", "status": "pending", "evidence": "" },
-    { "id": "scanner-reachability-and-domain-verification", "status": "pending", "evidence": "" },
-    { "id": "claude-portal-validation-and-connector-pairing", "status": "pending", "evidence": "" }
+    {
+      "id": "publisher-and-portal-access",
+      "status": "verified",
+      "evidence": "2026-10-19: OpenAI accepted 0.2.5 into an unsubmitted business-identity draft; all five skill scans passed, and the demo URL/reviewer information are complete. Claude publisher/GitHub access works and all seven source checks passed for 0.2.5. Publisher acknowledgments are complete as recorded in the legal gate. Neither directory submission has been performed."
+    },
+    {
+      "id": "hosted-service-terms-and-privacy-review",
+      "status": "verified",
+      "evidence": "2026-10-19: Approved service pages and corrected JWT-revocation wording deployed through PR #155 at 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Public terms/privacy checks passed. The publisher approved the terms and proceeding with the disclosed user-requested local validator/build workflows. All six OpenAI declarations are checked in its prepared dialog; all four Claude acknowledgments are saved and its final review page is available with automatic publication disabled. This records publisher approval, not an Anthropic policy ruling or directory acceptance. Neither final Submit button was clicked."
+    },
+    {
+      "id": "production-client-oauth-and-scopes",
+      "status": "verified",
+      "evidence": "2026-10-18: Native Codex DCR and Claude Code CIMD grants have all five Fusionmetrics scopes. OpenAI DCR/OIDC succeeds with its additional email identity scope. PR #155 deployed the full generic challenge. Claude web reauthorization used all five scopes; both its active connection and refreshed connector submission draft now show all 15 tools."
+    },
+    {
+      "id": "organization-permissions-and-revocation",
+      "status": "verified",
+      "evidence": "2026-10-18: Application tests cover identity, grant, Organization, admin and billing boundaries. Live cross-Organization selection/configure/retry/capture checks rejected actual foreign IDs without revealing records. A separate org:member authenticated with the full five-scope grant: status returned canManage:false, analytics reads succeeded, and all eight setup/GA4 write tools returned HTTP 403 Organization admin access required. Its refresh grant was revoked and temporary identity removed; the original reviewer remains the sole administrator. Earlier dedicated Codex refresh revocation returned 200 then invalid_grant and reconnect succeeded. Issued Clerk JWTs can remain valid until expiry, as disclosed."
+    },
+    {
+      "id": "tool-titles-and-annotations",
+      "status": "verified",
+      "evidence": "2026-10-18: Final production revision 5d253cac4e3c0e666ec5989ed2355580dcc843ce exposes all 15 tools with expected titles and annotations. Authenticated protocol validation and the final OpenAI rescan passed. OpenAI flags setup_request_credential_entry for further human review; no annotation mismatch was found."
+    },
+    {
+      "id": "reviewer-account-and-seeded-data",
+      "status": "verified",
+      "evidence": "2026-10-18: Existing iPhone reviewer has password-only access, one fictional Organization, administrator/lifetime access and preserved revenue fixtures. The isolated Shopify Partner account, test App and sample development store are connected; initial and Claude-initiated discovery/configuration/import completed. Synthetic BigQuery imports completed with 20 views, six clicks and four installs. Capture credentials and local official-template checks passed; a separate deployed App Bridge harness produced a real contact_received receipt with usableContact:true. These resources exercise all 15 MCP tools, including the expected completed-import retry rejection. Broader provider-browser coverage is tracked separately; Audience production data is not shared."
+    },
+    {
+      "id": "five-positive-three-negative-live-tests",
+      "status": "verified",
+      "evidence": "2026-10-18: All five positive and three negative cases passed in native Codex CLI and Claude Code with actual bundled skills and reviewer OAuth. Both recorded walkthroughs run candidate 0.2.4; metadata-only 0.2.5 preserves every skill and MCP configuration. Read-only MCP allowlists bounded these assistant tests, which do not establish setup-write, GUI-install or provider-provisioning coverage. Separate authenticated protocol probe passed 13/13, and official MCP Inspector 2.11.0 passed 14/14 recorded checks, including actual cross-Organization denials and idempotent GA4 replay."
+    },
+    {
+      "id": "review-demo-recording",
+      "status": "verified",
+      "evidence": "2026-10-18: Real Codex CLI and Claude Code PTY sessions each demonstrate the five positive and three negative cases using the installed 0.2.4 plugin and synthetic reviewer data. Videos are 1920x1080 H.264, 4m22s and 2m42s. Only idle pauses and bootstrap/exit were cut; output between cuts plays at original speed. Final decode, contact sheets and terminal frames were checked. Both uploads match local hashes and have anyone-with-link reader access; anonymous download HEAD requests returned 200 video/mp4 and the exact file sizes. Codex URL is in review.demo_recording_url; both links and scope limits are in docs/submission-packet.md. No GUI installation or external provider setup is claimed."
+    },
+    {
+      "id": "scanner-reachability-and-domain-verification",
+      "status": "verified",
+      "evidence": "2026-10-18: OpenAI domain verification succeeded after PR #154 deployment. The portal shows Configured, Authorized and Domain verified. Its final deployed-server rescan captured all 15 tools; only the credential-handoff tool is held for further human review. All five 0.2.5 skill scans passed. Reviewer credentials and actual demo URLs are saved; no blocking metadata findings remain."
+    },
+    {
+      "id": "claude-portal-validation-and-connector-pairing",
+      "status": "verified",
+      "evidence": "2026-10-18: The plugin listing is limited to Claude Code; Cowork and Claude apps are unchecked. All seven source checks passed for 0.2.5, with four informational URL warnings. The separate custom-connector validation draft uses CIMD and exposes all 15 tools. Actual Claude web execution exercised all 15: 14 succeeded, and retrying a completed import correctly returned 409 without starting another job. Shopify and synthetic GA4 imports completed. Protected reviewer instructions and videos are saved. Final policy attestations remain in the legal gate; broader surface publication/pairing is not claimed."
+    },
+    {
+      "id": "compatible-hosted-runtime",
+      "status": "verified",
+      "evidence": "2026-10-18: PRs #153, #154 and #155 deployed successfully through the normal main CI/CD path. Live health confirms final SHA 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Exact domain challenge, all-five-scope authentication challenge and both public policy pages passed verification. Native analytics/GA4 and fresh isolated Shopify import checks succeeded."
+    },
+    {
+      "id": "analytics-parity-and-migration",
+      "status": "verified",
+      "evidence": "2026-10-18: Both actual server implementations returned identical results in 11 comparisons over the same reviewer Parquet artifacts: app listing/selection/schema, Sprout MRR 8240, three Merchant rows, six events, Beacon MRR 4260, rejected SQL mutation/filesystem access and unknown app. The local MCP bridge uses the real analytics engine; catalogue/optional adapters are test stubs. This verifies handler/data parity, not the old public endpoint bearer-token path. New production analytics passed native-client and protocol checks with fresh full-scope grants. The legacy endpoint remains available; no forced migration or retirement is claimed."
+    },
+    {
+      "id": "listing-and-ga4-browser-workflows",
+      "status": "pending",
+      "evidence": "2026-10-19: Private Audience-Push draft subtitle was saved/reloaded/restored without publication. Reviewer synthetic BigQuery mapping/import and invalid-dataset preservation passed. Isolated Shopify discovery/configuration/import completed. A guarded interruption of its exact app-preparation worker produced a real failed run; normal MCP retry completed, idempotent replay returned the same execution, and Sprout MRR8240 was preserved. Capture local official-template checks passed; a separate staging App Bridge harness at 86fcf6d produced a real contact_received receipt with usableContact:true at 19:40:21 UTC. Nine focused checks and full CI/staging deployment passed. A real isolated GA4 property and web stream now exist, with page_view and fusionmetrics_review_visit verified in Realtime; the native daily-only US export link was created on 19 October with only the isolated stream, streaming/mobile advertising identifiers/user-data export off. Fresh post-link events reached Realtime. Google has not yet created the first native dataset/table, so normal mapping/import verification remains pending; the synthetic Sprout mapping is preserved. The managed principal already has project access and no manual IAM grant was added. The isolated Measurement ID is saved in the English draft and verified after reload; no Measurement Protocol secret is configured and live listing/install traffic remains unverified. The isolated Partner account registration completed after publisher confirmation of the historical association declaration. Its English draft subtitle save/reload/restore check passed, with the original empty value verified after reload. The App remains unpublished: public rendering, public restoration, ranking effects and live listing/install traffic cannot be verified with this resource. These are disclosed coverage limits, not passed live experiments."
+    }
   ]
 }

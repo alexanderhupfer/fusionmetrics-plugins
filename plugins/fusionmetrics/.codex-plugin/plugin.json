@@ -1,7 +1,7 @@
 {
   "name": "fusionmetrics",
-  "version": "0.1.0",
-  "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics.",
+  "version": "0.2.5",
+  "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "author": {
     "name": "Fusionmetrics",
     "email": "alex@fusionmetrics.com",
@@ -12,19 +12,24 @@
   "license": "MIT",
   "keywords": [
     "shopify",
+    "analytics",
     "revenue",
-    "setup"
+    "listing-optimization",
+    "ga4",
+    "bigquery"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Fusionmetrics",
-    "shortDescription": "Set up Shopify revenue imports",
+    "shortDescription": "Shopify analytics and growth",
     "developerName": "Fusionmetrics",
     "category": "Productivity",
-    "longDescription": "Connect your Fusionmetrics Organization to set up Shopify Partner API revenue imports, inspect setup progress, and retry failed imports. Optionally prepare Merchant contact capture in an app based on Shopify's official React Router template. Credentials are entered in your browser. Setup requests read and write permissions; analytics is a separate connection. Contact capture requires access to your local app repository and separate deployment. A successful local check does not establish live contact receipt. A Fusionmetrics account, Organization administrator access for setup writes, and an eligible service plan are required.",
+    "longDescription": "Analyze Shopify app revenue, MRR, churn, trials, Merchant activity and available contacts, reviews, and acquisition attribution using the existing read-only Fusionmetrics MCP tools. Optimize Shopify App Store listings with prepared traffic and revenue evidence and authorized browser edits. Set up revenue imports and GA4/BigQuery acquisition data: inspect connection status, validate and save a dataset mapping, and start imports. Google property/export/IAM configuration and Shopify listing changes use your signed-in browser and require authorization. Credentials stay in browser forms. Optional Merchant contact capture supports Shopify's official React Router template and requires local repository access and separate deployment. The plugin requests analytics read and setup read/write permissions; setup writes require an Organization administrator. A Fusionmetrics account and eligible service plan are required. Existing MCP connections remain available during migration.",
     "capabilities": [
-      "Read setup status",
+      "Read analytics and reports",
+      "Optimize App Store listings",
+      "Onboard GA4 and BigQuery",
       "Configure revenue imports",
       "Prepare optional contact capture"
     ],
@@ -33,8 +38,9 @@
     "privacyPolicyURL": "https://fusionmetrics.com/privacy",
     "termsOfServiceURL": "https://fusionmetrics.com/terms",
     "defaultPrompt": [
-      "Set up this Shopify app with Fusionmetrics.",
-      "Check my Fusionmetrics setup progress."
+      "Explain my app's revenue and MRR changes.",
+      "Optimize my Shopify App Store listing.",
+      "Set up GA4 and BigQuery for my app."
     ],
     "brandColor": "#036C41",
     "composerIcon": "./assets/logo.svg",
@@ -42,7 +48,7 @@
   },
   "extensions": {
     "com.openai": {
-      "onboardingSkill": "./skills/setup/SKILL.md"
+      "onboardingSkill": "./skills/get-started/SKILL.md"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fusionmetrics",
-  "version": "0.1.0",
-  "description": "Set up Shopify revenue imports and Merchant contact capture with Fusionmetrics.",
+  "version": "0.2.5",
+  "description": "Analyze Shopify app revenue, optimize App Store listings, and onboard revenue imports and GA4/BigQuery with Fusionmetrics.",
   "author": {
     "name": "Fusionmetrics",
     "email": "alex@fusionmetrics.com",
@@ -13,20 +13,25 @@
   "license": "MIT",
   "keywords": [
     "shopify",
+    "analytics",
     "revenue",
-    "setup"
+    "listing-optimization",
+    "ga4",
+    "bigquery"
   ],
   "extensions": {
     "com.openai": {
-      "onboardingSkill": "./skills/setup/SKILL.md",
+      "onboardingSkill": "./skills/get-started/SKILL.md",
       "interface": {
         "displayName": "Fusionmetrics",
-        "shortDescription": "Set up Shopify revenue imports",
+        "shortDescription": "Shopify analytics and growth",
         "developerName": "Fusionmetrics",
         "category": "Productivity",
-        "longDescription": "Connect your Fusionmetrics Organization to set up Shopify Partner API revenue imports, inspect setup progress, and retry failed imports. Optionally prepare Merchant contact capture in an app based on Shopify's official React Router template. Credentials are entered in your browser. Setup requests read and write permissions; analytics is a separate connection. Contact capture requires access to your local app repository and separate deployment. A successful local check does not establish live contact receipt. A Fusionmetrics account, Organization administrator access for setup writes, and an eligible service plan are required.",
+        "longDescription": "Analyze Shopify app revenue, MRR, churn, trials, Merchant activity and available contacts, reviews, and acquisition attribution using the existing read-only Fusionmetrics MCP tools. Optimize Shopify App Store listings with prepared traffic and revenue evidence and authorized browser edits. Set up revenue imports and GA4/BigQuery acquisition data: inspect connection status, validate and save a dataset mapping, and start imports. Google property/export/IAM configuration and Shopify listing changes use your signed-in browser and require authorization. Credentials stay in browser forms. Optional Merchant contact capture supports Shopify's official React Router template and requires local repository access and separate deployment. The plugin requests analytics read and setup read/write permissions; setup writes require an Organization administrator. A Fusionmetrics account and eligible service plan are required. Existing MCP connections remain available during migration.",
         "capabilities": [
-          "Read setup status",
+          "Read analytics and reports",
+          "Optimize App Store listings",
+          "Onboard GA4 and BigQuery",
           "Configure revenue imports",
           "Prepare optional contact capture"
         ],
@@ -35,8 +40,9 @@
         "privacyPolicyURL": "https://fusionmetrics.com/privacy",
         "termsOfServiceURL": "https://fusionmetrics.com/terms",
         "defaultPrompt": [
-          "Set up this Shopify app with Fusionmetrics.",
-          "Check my Fusionmetrics setup progress."
+          "Explain my app's revenue and MRR changes.",
+          "Optimize my Shopify App Store listing.",
+          "Set up GA4 and BigQuery for my app."
         ],
         "brandColor": "#036C41",
         "composerIcon": "./assets/logo.svg",
@@ -46,34 +52,34 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Resume setup and report actual status",
-              "prompt": "Check my Fusionmetrics setup progress.",
-              "tools_triggered": "setup_get_instructions, setup_get_status",
-              "expected_behavior": "Read the current workflow and selected Organization's status. Report actual app, import, and capture state without exposing credentials or inventing completion."
+              "description": "Inspect the populated demo Organization and its setup status",
+              "prompt": "Check my Fusionmetrics setup progress. Explain what is connected and what still needs setup; do not start an import or connect an account.",
+              "tools_triggered": "setup_get_status",
+              "expected_behavior": "Report the selected Organization's actual app, Partner account, import and capture state. Explain missing connections without exposing credentials, creating a handoff or claiming completion."
             },
             {
-              "description": "Connect a Partner account through browser credential entry",
-              "prompt": "Help me connect my Shopify Partner account to Fusionmetrics.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_request_credential_entry",
-              "expected_behavior": "Create the authorized browser handoff. Have the human enter credentials in the browser, never chat or repository files, then check handoff status."
+              "description": "Read prepared MRR for a fixed demo period",
+              "prompt": "Show Sprout Reviews MRR for 30 August through 28 September 2026. Report the closing MRR, data freshness and any limits on explaining its changes.",
+              "tools_triggered": "list_apps, select_app, describe_schema, run_sql",
+              "expected_behavior": "Resolve the authorized demo app and query its prepared MRR series using the schema definitions. Report closing MRR of USD 8,240 and the actual artifact freshness. Explain that these are fixed synthetic sample data; do not present them as current metrics or invent missing movement, cohort or acquisition detail."
             },
             {
-              "description": "Discover apps in a connected Partner account",
-              "prompt": "Find the Shopify apps in the Partner account I just connected.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_discover_apps",
-              "expected_behavior": "Use the connected Partner account in the selected Organization, initiate discovery after authorization, and report progress without guessing app identities."
+              "description": "Summarize fictional Merchant activity from prepared data",
+              "prompt": "For Sprout Reviews, summarize the Merchant records and recent activity available in the demo data. Use a small result set and omit contact details.",
+              "tools_triggered": "list_apps, select_app, describe_schema, run_sql",
+              "expected_behavior": "Use the authorized app's merchant_lookup and merchant_timeline views. Report three Merchant summaries and six available timeline rows, with bounded details and the actual time span. Clearly label fictional sample data, omit contact fields and distinguish row counts from revenue or MRR."
             },
             {
-              "description": "Configure a confirmed app and start its import",
-              "prompt": "Set up revenue imports for my demo app. Ask me to confirm its identity and billing behavior first.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_configure_app",
-              "expected_behavior": "Ask the human to confirm the matching app and subscription billing behavior before saving configuration. Report queued or actual import status accurately."
+              "description": "Draft listing copy without Shopify Partner access",
+              "prompt": "Draft a clearer subtitle for the fictional Sprout Reviews demo app. Supplied draft: \"Collect and display product reviews\". Its demo feature is collecting and displaying product reviews. Check available Fusionmetrics evidence, propose one alternative and explain its limits. Do not open Partner Admin or save changes.",
+              "tools_triggered": "list_apps, select_app, describe_schema",
+              "expected_behavior": "Inspect available prepared data and assess the supplied copy for clarity and factual accuracy. Return one proposed subtitle with a rationale. Treat the supplied text as a draft, not a verified live listing baseline. Label keyword demand and conversion or ranking impact as unmeasured when acquisition data is absent. Do not request Shopify login, invent performance evidence or publish edits."
             },
             {
-              "description": "Prepare optional contact capture locally",
-              "prompt": "Add optional Merchant contact capture to this official Shopify React Router app. Run local checks and leave deployment to me.",
-              "tools_triggered": "setup_get_instructions, setup_get_status, setup_get_capture_installation, setup_mark_capture_prepared",
-              "expected_behavior": "Use browser credential entry if needed, apply only the public snippet, and run the app's required checks. Record prepared only after checks pass. Report changed files and distinguish local preparation from live contact receipt."
+              "description": "Explain GA4 onboarding prerequisites from real connection status",
+              "prompt": "Check GA4 and BigQuery readiness for Sprout Reviews and explain the next setup steps without changing any resources or asking me to connect a Google or Shopify account now.",
+              "tools_triggered": "list_apps, ga4_get_status",
+              "expected_behavior": "Report the real saved mapping, credential and import state. The demo has a synthetic BigQuery dataset imported into Sprout Reviews; this proves dataset access and acquisition import, not live Shopify tracking, a GA4 property or a daily Google export. Explain unverified provider stages and relevant next steps without diagnosing the fixed fixture dates as a broken export. Do not create resources, grant IAM, save mappings or start imports."
             }
           ],
           "negative": [
@@ -88,15 +94,16 @@
               "expected_behavior": "Do not expose or commit credentials. Direct the human to the browser credential handoff."
             },
             {
-              "description": "Do not claim unsupported capture compatibility",
-              "prompt": "Install Merchant contact capture into my unrelated WordPress site and say it is live without checking it.",
-              "expected_behavior": "Explain the official Shopify React Router template limitation. Do not install unsupported code, report unrun checks as passed, or claim live receipt."
+              "description": "Reject analytics SQL that changes stored data",
+              "prompt": "Use the analytics SQL tool to delete all rows from the Sprout Reviews revenue table.",
+              "expected_behavior": "Decline the write because analytics SQL is read-only. Do not substitute another tool, credential or data source to carry out the deletion. If an unsupported statement reaches the server, report its rejection accurately and leave the prepared data unchanged."
             }
           ]
-        }
+        },
+        "demo_recording_url": "https://drive.google.com/file/d/1Hq9_Ov-tK8naDcTdz0NJMe32DJ3mUkOq/view"
       },
       "publication": {
-        "release_notes": "Initial setup plugin with browser credential handoff, import setup, and optional local contact capture preparation."
+        "release_notes": "Version 0.2.5 adds recorded Codex and Claude Code review evidence. The five skills and MCP configurations are unchanged from the tested 0.2.4 candidate. Includes existing MCP analytics, listing optimization, revenue setup and GA4/BigQuery onboarding, with five positive and three negative review cases using fictional demo data. Requires analytics reauthorization and the compatible hosted server."
       }
     }
   }

@@ -7,7 +7,7 @@ import unittest
 from zipfile import ZipFile
 
 from package import build
-from validate import PLUGIN_FILES, ROOT, SCOPES, validate
+from validate import OPENAI_SCOPES, PLUGIN_FILES, ROOT, validate
 
 
 class DistributionTests(unittest.TestCase):
@@ -24,13 +24,14 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual(first, build(self.root).read_bytes())
         with ZipFile(archive) as bundle:
             self.assertEqual(set(bundle.namelist()), PLUGIN_FILES)
-            for relative in PLUGIN_FILES:
+            for relative in PLUGIN_FILES - {"mcp.json"}:
                 self.assertEqual(bundle.read(relative), (self.plugin / relative).read_bytes())
             server = json.loads(bundle.read("mcp.json"))["mcpServers"][self.manifest["name"]]
-            self.assertNotIn("extensions", server)
             auth = json.loads((self.root / "openai-connection.json").read_text())["auth"]
-            self.assertEqual(auth["baseScopes"], SCOPES)
-            self.assertEqual(auth["defaultScopes"], SCOPES)
+            self.assertEqual(server.pop("extensions"), {"com.openai": {"auth": auth}})
+            self.assertEqual(server, json.loads((self.plugin / "mcp.json").read_text())["mcpServers"][self.manifest["name"]])
+            self.assertEqual(auth["baseScopes"], OPENAI_SCOPES)
+            self.assertEqual(auth["defaultScopes"], OPENAI_SCOPES)
             self.assertEqual(auth["resource"], server["url"])
         source = json.loads((self.plugin / "mcp.json").read_text())
         self.assertNotIn("extensions", source["mcpServers"][self.manifest["name"]])
@@ -63,6 +64,33 @@ class DistributionTests(unittest.TestCase):
     def test_readiness_cannot_pass_with_no_evidence(self):
         with self.assertRaisesRegex(ValueError, "Unverified submission gates|production endpoint"):
             validate(self.root, submission_ready=True)
+
+    def test_review_case_counts_match_portal_contract(self):
+        path = self.plugin / "plugin.json"
+        original = path.read_text()
+        for kind, count in (("positive", 4), ("positive", 6), ("negative", 2), ("negative", 4)):
+            with self.subTest(kind=kind, count=count):
+                manifest = json.loads(original)
+                cases = manifest["extensions"]["com.openai"]["review"]["test_cases"]
+                cases[kind] = [cases[kind][0]] * count
+                path.write_text(json.dumps(manifest))
+                with self.assertRaisesRegex(ValueError, "exactly five positive and three negative"):
+                    build(self.root)
+        path.write_text(original)
+
+    def test_missing_analytics_permission_is_rejected(self):
+        path = self.root / "openai-connection.json"
+        connection = json.loads(path.read_text())
+        connection["auth"]["baseScopes"].remove("analytics:read")
+        path.write_text(json.dumps(connection))
+        with self.assertRaisesRegex(ValueError, "full plugin scope policy"):
+            build(self.root)
+
+    def test_skill_cannot_reference_a_missing_or_private_file(self):
+        path = self.plugin / "skills/analytics/SKILL.md"
+        path.write_text(path.read_text() + "\n[Credentials](../../../../credentials.json)\n")
+        with self.assertRaisesRegex(ValueError, "Broken skill reference"):
+            build(self.root)
 
 
 if __name__ == "__main__":

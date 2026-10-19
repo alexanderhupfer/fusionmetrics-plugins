@@ -4,7 +4,7 @@
       "type": "http",
       "url": "https://fusionmetrics.com/api/mcp",
       "oauth": {
-        "scopes": "openid user:org:read setup:read setup:write"
+        "scopes": "openid user:org:read setup:read setup:write analytics:read"
       }
     }
   }

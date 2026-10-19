@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fusionmetrics.com/schemas/shopify-listing-keyword-baseline.schema.json",
+  "title": "Shopify App Store keyword experiment baseline",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "skill_version", "captured_at", "app", "source", "listing", "excluded"],
+  "properties": {
+    "schema_version": { "const": "1.1.0" },
+    "skill_version": { "const": "1.1.0" },
+    "captured_at": { "type": "string", "format": "date-time" },
+    "app": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fusionmetrics_app_key", "shopify_app_gid", "shopify_app_numeric_id", "name", "locale"],
+      "properties": {
+        "fusionmetrics_app_key": { "type": "string", "minLength": 1 },
+        "shopify_app_gid": { "type": "string", "minLength": 1 },
+        "shopify_app_numeric_id": { "type": "string", "pattern": "^[0-9]+$" },
+        "shopify_partner_id": { "type": "string", "pattern": "^[0-9]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "locale": { "const": "en" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "entry_url", "editor_url", "public_listing_url", "status", "primary"],
+      "properties": {
+        "surface": { "const": "Shopify Partner Admin listing editor" },
+        "entry_url": { "type": "string", "format": "uri" },
+        "editor_url": { "type": "string", "format": "uri" },
+        "public_listing_url": { "type": "string", "format": "uri" },
+        "status": { "type": "string", "minLength": 1 },
+        "primary": { "type": "boolean" }
+      }
+    },
+    "listing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["app_name", "primary_category", "introduction", "app_details", "features", "app_card_subtitle", "app_store_search_terms", "web_search_title", "web_search_description", "media_alt_texts"],
+      "properties": {
+        "app_name": { "type": "string" },
+        "primary_category": { "type": "string" },
+        "introduction": { "type": "string" },
+        "app_details": { "type": "string" },
+        "features": { "type": "array", "items": { "type": "string" } },
+        "app_card_subtitle": { "type": "string" },
+        "app_store_search_terms": { "type": "array", "items": { "type": "string" } },
+        "web_search_title": { "type": "string" },
+        "web_search_description": { "type": "string" },
+        "media_alt_texts": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "excluded": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}
