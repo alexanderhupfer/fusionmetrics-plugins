@@ -1,6 +1,6 @@
 # Publication preparation
 
-Version 0.2.5 was submitted to OpenAI and Claude on 19 October 2026. OpenAI reports In review; the Claude Code package passed its security scan and awaits an Anthropic reviewer. Neither is approved or published, and the companion Claude MCP connector was also submitted and is in review. Passing local validation establishes package structure, not authentication, live behavior, review approval, or availability in a directory.
+Version 0.2.5 was submitted to OpenAI and Claude on 19 October 2026. OpenAI reports In review; the Claude Code package passed its security scan and awaits an Anthropic reviewer. Neither is approved or published, and Anthropic approved the companion MCP connector on 19 October; it is not published. Passing local validation establishes package structure, not authentication, live behavior, review approval, or availability in a directory.
 
 ## Build and validate
 
