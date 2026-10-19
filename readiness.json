@@ -4,12 +4,12 @@
     {
       "id": "publisher-and-portal-access",
       "status": "verified",
-      "evidence": "2026-10-18: OpenAI accepted 0.2.5 into an unsubmitted business-identity draft; all five skill scans passed, and the demo URL/reviewer information are complete. Claude publisher/GitHub access works and all seven source checks passed for 0.2.5. Neither directory submission nor legal attestations have been performed."
+      "evidence": "2026-10-19: OpenAI accepted 0.2.5 into an unsubmitted business-identity draft; all five skill scans passed, and the demo URL/reviewer information are complete. Claude publisher/GitHub access works and all seven source checks passed for 0.2.5. Publisher acknowledgments are complete as recorded in the legal gate. Neither directory submission has been performed."
     },
     {
       "id": "hosted-service-terms-and-privacy-review",
-      "status": "pending",
-      "evidence": "2026-10-18: Approved service pages and corrected JWT-revocation wording deployed through PR #155 at 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Public terms/privacy checks passed. Exact OpenAI publisher declarations are prepared, awaiting confirmation before acceptance. Claude\u2019s declaration about no execution outside declared MCP servers requires clarification for the disclosed local validator/build workflow; no unsupported legal declaration was checked."
+      "status": "verified",
+      "evidence": "2026-10-19: Approved service pages and corrected JWT-revocation wording deployed through PR #155 at 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Public terms/privacy checks passed. The publisher approved the terms and proceeding with the disclosed user-requested local validator/build workflows. All six OpenAI declarations are checked in its prepared dialog; all four Claude acknowledgments are saved and its final review page is available with automatic publication disabled. This records publisher approval, not an Anthropic policy ruling or directory acceptance. Neither final Submit button was clicked."
     },
     {
       "id": "production-client-oauth-and-scopes",
