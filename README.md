@@ -1,6 +1,6 @@
 # Fusionmetrics plugins
 
-Version 0.2.5 was submitted to OpenAI and Claude on 19 October 2026. OpenAI reports In review; the Claude Code package passed its security scan and awaits an Anthropic reviewer. Neither plugin is approved or published. The companion Claude MCP connector was also submitted and is in review. See the [submission record](./docs/submission-packet.md) for verified coverage and limitations.
+Version 0.2.5 was submitted to OpenAI and Claude on 19 October 2026. OpenAI reports In review; the Claude Code package passed its security scan and awaits an Anthropic reviewer. Neither plugin is approved or published. Anthropic approved the companion MCP connector on 19 October; it is not published. See the [submission record](./docs/submission-packet.md) for verified coverage and limitations.
 
 The [Fusionmetrics plugin](./plugins/fusionmetrics/README.md) connects to https://fusionmetrics.com/api/mcp through browser OAuth. It provides the existing read-only analytics capabilities, App Store listing optimization, GA4/BigQuery onboarding, revenue import setup, and optional contact capture. Google administration and Shopify listing changes use the Partner's authorized browser. The package contains public integration files only; it contains no Fusionmetrics application source, credentials, or Partner data.
 

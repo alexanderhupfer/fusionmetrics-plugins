@@ -4,7 +4,7 @@
     {
       "id": "publisher-and-portal-access",
       "status": "verified",
-      "evidence": "2026-10-19: Plugin PR #2 merged to main at d2cf0b3; main CI39216550144 passed. OpenAI accepted version0.2.5 for review and reports In review. Claude revalidated main at d2cf0b3 with all seven checks passed, then accepted the Claude Code package for scanning. Neither plugin is approved or published. Companion connector submitted on19October and confirmed In review. Claude subsequently passed its security scan and directory policy with warnings; it awaits an Anthropic reviewer. Four directory-only URL fields need no action according to the portal; a separate inventory-gap warning has no detailed component identified."
+      "evidence": "2026-10-19: Plugin PR #2 merged to main at d2cf0b3; main CI39216550144 passed. OpenAI accepted version0.2.5 for review and reports In review. Claude revalidated main at d2cf0b3 with all seven checks passed, then accepted the Claude Code package for scanning. Neither plugin is approved or published. Companion connector submitted on19October and confirmed In review. Claude subsequently passed its security scan and directory policy with warnings; it awaits an Anthropic reviewer. Four directory-only URL fields need no action according to the portal; a separate inventory-gap warning has no detailed component identified. Later on19October, Anthropic approved the companion MCP connector. The separate Publish action has not been taken. Neither plugin bundle is approved; pairing remains unverified."
     },
     {
       "id": "hosted-service-terms-and-privacy-review",
@@ -49,7 +49,7 @@
     {
       "id": "claude-portal-validation-and-connector-pairing",
       "status": "pending",
-      "evidence": "2026-10-18: The plugin listing is limited to Claude Code; Cowork and Claude apps are unchecked. All seven source checks passed for 0.2.5, with four informational URL warnings. The separate custom-connector validation draft uses CIMD and exposes all 15 tools. Actual Claude web execution exercised all 15: 14 succeeded, and retrying a completed import correctly returned 409 without starting another job. Shopify and synthetic GA4 imports completed. Protected reviewer instructions and videos are saved. Final policy attestations remain in the legal gate; broader surface publication/pairing is not claimed. 2026-10-19: Companion connector submitted with all7 acknowledgments, Inspector declaration, refreshed deployed descriptions, protected test instructions and disclosed coverage limits. Portal confirms In review and not live. No pairing control was exposed in plugin or connector Settings; pairing remains unverified."
+      "evidence": "2026-10-18: The plugin listing is limited to Claude Code; Cowork and Claude apps are unchecked. All seven source checks passed for 0.2.5, with four informational URL warnings. The separate custom-connector validation draft uses CIMD and exposes all 15 tools. Actual Claude web execution exercised all 15: 14 succeeded, and retrying a completed import correctly returned 409 without starting another job. Shopify and synthetic GA4 imports completed. Protected reviewer instructions and videos are saved. Final policy attestations remain in the legal gate; broader surface publication/pairing is not claimed. 2026-10-19: Companion connector submitted with all7 acknowledgments, Inspector declaration, refreshed deployed descriptions, protected test instructions and disclosed coverage limits. Portal confirms In review and not live. No pairing control was exposed in plugin or connector Settings; pairing remains unverified. Later on19October, Anthropic approved the companion MCP connector. The separate Publish action has not been taken. Neither plugin bundle is approved; pairing remains unverified."
     },
     {
       "id": "compatible-hosted-runtime",
@@ -72,7 +72,7 @@
     "version": "0.2.5",
     "openai": "In review; not published",
     "claudePlugin": "Security scan passed; Publish requested; awaiting Anthropic reviewer; not published",
-    "claudeConnector": "Submitted; In review; not live",
+    "claudeConnector": "Approved on 19 October 2026; not published",
     "sourceCommit": "d2cf0b3fb01578079e0521be172c7612f905d6f9",
     "approval": "Neither directory has approved the plugin.",
     "claudeConnectorUrl": "https://claude.ai/directory/manage/fusionmetrics"
