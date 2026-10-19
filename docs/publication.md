@@ -1,6 +1,6 @@
 # Publication preparation
 
-Version 0.2.5 was submitted to OpenAI and Claude on 19 October 2026. OpenAI reports In review; the Claude Code package passed its security scan and awaits an Anthropic reviewer. Neither is approved or published, and the companion Claude MCP connector is still being finalized. Passing local validation establishes package structure, not authentication, live behavior, review approval, or availability in a directory.
+Version 0.2.5 was submitted to OpenAI and Claude on 19 October 2026. OpenAI reports In review; the Claude Code package passed its security scan and awaits an Anthropic reviewer. Neither is approved or published, and the companion Claude MCP connector was also submitted and is in review. Passing local validation establishes package structure, not authentication, live behavior, review approval, or availability in a directory.
 
 ## Build and validate
 
@@ -20,7 +20,7 @@ Use [the submission packet](./submission-packet.md) for listing fields, tool ann
 
 After the reviewer completes normal OAuth, `scripts/probe_authenticated.py` can check the deployed revision, all 15 tool annotations, the expected review Organization, the selected App's recorded fixture totals, setup/GA4 status and three analytics rejection cases. Supply an existing OAuth access token in an owner-readable-only file outside the repository, plus a private fixture JSON containing `organizationId`, `appKey`, `expectedRows`, `expectedSha` and `pluginCommit`. Run with `--access-token-file`, `--fixture-file` and `--output`; `--help` describes the arguments. The output file is created with mode 0600 outside the repository. The script refuses setup/GA4 mutation tools and redirected authenticated requests, and stops before analytics if the Organization differs. Its SQL rejection probe attempts only a temporary in-memory table and a nonexistent file path. This operator probe does not replace native-client sign-in, assistant-prompt cases, real imports, revocation or legacy parity tests. Neither its tests nor an unexecuted probe establish live readiness.
 
-For a submission-readiness check, run `python3 scripts/validate.py --submission-ready`. That check must fail until every item in `readiness.json` has supporting evidence and the required metadata and review recording are present. The publisher authorized submitting the tested package with the incomplete provider-browser coverage disclosed. The readiness check intentionally continues to fail while that coverage gate is pending; submission is not evidence that all coverage is complete. Credentials and recordings containing private information belong outside Git.
+For a submission-readiness check, run `python3 scripts/validate.py --submission-ready`. That check must fail until every item in `readiness.json` has supporting evidence and the required metadata and review recording are present. The publisher authorized submitting the tested package with the incomplete provider-browser coverage disclosed. Connector pairing is also tracked as pending until the portal confirms it. The readiness check intentionally continues to fail while that coverage gate is pending; submission is not evidence that all coverage is complete. Credentials and recordings containing private information belong outside Git.
 
 ## Codex and ChatGPT
 

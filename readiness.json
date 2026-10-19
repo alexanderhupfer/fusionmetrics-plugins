@@ -4,7 +4,7 @@
     {
       "id": "publisher-and-portal-access",
       "status": "verified",
-      "evidence": "2026-10-19: Plugin PR #2 merged to main at d2cf0b3; main CI39216550144 passed. OpenAI accepted version0.2.5 for review and reports In review. Claude revalidated main at d2cf0b3 with all seven checks passed, then accepted the Claude Code package for scanning. Neither plugin is approved or published. Companion connector submission is still being finalized. Claude subsequently passed its security scan and directory policy with warnings; it awaits an Anthropic reviewer. Four directory-only URL fields need no action according to the portal; a separate inventory-gap warning has no detailed component identified."
+      "evidence": "2026-10-19: Plugin PR #2 merged to main at d2cf0b3; main CI39216550144 passed. OpenAI accepted version0.2.5 for review and reports In review. Claude revalidated main at d2cf0b3 with all seven checks passed, then accepted the Claude Code package for scanning. Neither plugin is approved or published. Companion connector submitted on19October and confirmed In review. Claude subsequently passed its security scan and directory policy with warnings; it awaits an Anthropic reviewer. Four directory-only URL fields need no action according to the portal; a separate inventory-gap warning has no detailed component identified."
     },
     {
       "id": "hosted-service-terms-and-privacy-review",
@@ -24,7 +24,7 @@
     {
       "id": "tool-titles-and-annotations",
       "status": "verified",
-      "evidence": "2026-10-18: Final production revision 5d253cac4e3c0e666ec5989ed2355580dcc843ce exposes all 15 tools with expected titles and annotations. Authenticated protocol validation and the final OpenAI rescan passed. OpenAI flags setup_request_credential_entry for further human review; no annotation mismatch was found."
+      "evidence": "2026-10-18: Final production revision 5d253cac4e3c0e666ec5989ed2355580dcc843ce exposes all 15 tools with expected titles and annotations. Authenticated protocol validation and the final OpenAI rescan passed. OpenAI flags setup_request_credential_entry for further human review; no annotation mismatch was found. 2026-10-19: Deployed dcc9b413 and refreshed Claude metadata verified all15 top-level titles. Claude gives15 informational suggestions for annotations.title; these are not missing top-level protocol titles."
     },
     {
       "id": "reviewer-account-and-seeded-data",
@@ -48,13 +48,13 @@
     },
     {
       "id": "claude-portal-validation-and-connector-pairing",
-      "status": "verified",
-      "evidence": "2026-10-18: The plugin listing is limited to Claude Code; Cowork and Claude apps are unchecked. All seven source checks passed for 0.2.5, with four informational URL warnings. The separate custom-connector validation draft uses CIMD and exposes all 15 tools. Actual Claude web execution exercised all 15: 14 succeeded, and retrying a completed import correctly returned 409 without starting another job. Shopify and synthetic GA4 imports completed. Protected reviewer instructions and videos are saved. Final policy attestations remain in the legal gate; broader surface publication/pairing is not claimed."
+      "status": "pending",
+      "evidence": "2026-10-18: The plugin listing is limited to Claude Code; Cowork and Claude apps are unchecked. All seven source checks passed for 0.2.5, with four informational URL warnings. The separate custom-connector validation draft uses CIMD and exposes all 15 tools. Actual Claude web execution exercised all 15: 14 succeeded, and retrying a completed import correctly returned 409 without starting another job. Shopify and synthetic GA4 imports completed. Protected reviewer instructions and videos are saved. Final policy attestations remain in the legal gate; broader surface publication/pairing is not claimed. 2026-10-19: Companion connector submitted with all7 acknowledgments, Inspector declaration, refreshed deployed descriptions, protected test instructions and disclosed coverage limits. Portal confirms In review and not live. No pairing control was exposed in plugin or connector Settings; pairing remains unverified."
     },
     {
       "id": "compatible-hosted-runtime",
       "status": "verified",
-      "evidence": "2026-10-18: PRs #153, #154 and #155 deployed successfully through the normal main CI/CD path. Live health confirms final SHA 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Exact domain challenge, all-five-scope authentication challenge and both public policy pages passed verification. Native analytics/GA4 and fresh isolated Shopify import checks succeeded."
+      "evidence": "2026-10-18: PRs #153, #154 and #155 deployed successfully through the normal main CI/CD path. Live health confirms final SHA 5d253cac4e3c0e666ec5989ed2355580dcc843ce. Exact domain challenge, all-five-scope authentication challenge and both public policy pages passed verification. Native analytics/GA4 and fresh isolated Shopify import checks succeeded. 2026-10-19: Description-only PR #157 merged at dcc9b413cb0ccf1caf1672d121a65d6fac1fb5d6. Main CI39218351774 and production deploy39219473880 passed. Live health confirmed the exact SHA, authenticated Inspector returned all15 tools with corrected factual descriptions, and Sprout MRR remains8240."
     },
     {
       "id": "analytics-parity-and-migration",
@@ -64,16 +64,17 @@
     {
       "id": "listing-and-ga4-browser-workflows",
       "status": "pending",
-      "evidence": "2026-10-19: Private Audience-Push draft subtitle was saved/reloaded/restored without publication. Reviewer synthetic BigQuery mapping/import and invalid-dataset preservation passed. Isolated Shopify discovery/configuration/import completed. A guarded interruption of its exact app-preparation worker produced a real failed run; normal MCP retry completed, idempotent replay returned the same execution, and Sprout MRR8240 was preserved. Capture local official-template checks passed; a separate staging App Bridge harness at 86fcf6d produced a real contact_received receipt with usableContact:true at 19:40:21 UTC. Nine focused checks and full CI/staging deployment passed. A real isolated GA4 property and web stream now exist, with page_view and fusionmetrics_review_visit verified in Realtime; the native daily-only US export link was created on 19 October with only the isolated stream, streaming/mobile advertising identifiers/user-data export off. Fresh post-link events reached Realtime. Google has not yet created the first native dataset/table, so normal mapping/import verification remains pending; the synthetic Sprout mapping is preserved. The managed principal already has project access and no manual IAM grant was added. The isolated Measurement ID is saved in the English draft and verified after reload; no Measurement Protocol secret is configured and live listing/install traffic remains unverified. The isolated Partner account registration completed after publisher confirmation of the historical association declaration. Its English draft subtitle save/reload/restore check passed, with the original empty value verified after reload. The App remains unpublished: public rendering, public restoration, ranking effects and live listing/install traffic cannot be verified with this resource. These are disclosed coverage limits, not passed live experiments."
+      "evidence": "2026-10-19: Private Audience-Push draft subtitle was saved/reloaded/restored without publication. Reviewer synthetic BigQuery mapping/import and invalid-dataset preservation passed. Isolated Shopify discovery/configuration/import completed. A guarded interruption of its exact app-preparation worker produced a real failed run; normal MCP retry completed, idempotent replay returned the same execution, and Sprout MRR8240 was preserved. Capture local official-template checks passed; a separate staging App Bridge harness at 86fcf6d produced a real contact_received receipt with usableContact:true at 19:40:21 UTC. Nine focused checks and full CI/staging deployment passed. A real isolated GA4 property and web stream now exist, with page_view and fusionmetrics_review_visit verified in Realtime; the native daily-only US export link was created on 19 October with only the isolated stream, streaming/mobile advertising identifiers/user-data export off. Fresh post-link events reached Realtime. Google has not yet created the first native dataset/table, so normal mapping/import verification remains pending; the synthetic Sprout mapping is preserved. The managed principal already has project access and no manual IAM grant was added. The isolated Measurement ID is saved in the English draft and verified after reload; no Measurement Protocol secret is configured and live listing/install traffic remains unverified. The isolated Partner account registration completed after publisher confirmation of the historical association declaration. Its English draft subtitle save/reload/restore check passed, with the original empty value verified after reload. The App remains unpublished: public rendering, public restoration, ranking effects and live listing/install traffic cannot be verified with this resource. These are disclosed coverage limits, not passed live experiments. Staging fixtures restored at44bd5a79 via successful workflow39221432423; health exact SHA and both fixture URLs200."
     }
   ],
   "submissions": {
     "date": "2026-10-19",
     "version": "0.2.5",
     "openai": "In review; not published",
-    "claudePlugin": "Security scan passed; awaiting Anthropic reviewer; not published",
-    "claudeConnector": "Draft; description-only fix merged, main CI passed, production deployment running",
+    "claudePlugin": "Security scan passed; Publish requested; awaiting Anthropic reviewer; not published",
+    "claudeConnector": "Submitted; In review; not live",
     "sourceCommit": "d2cf0b3fb01578079e0521be172c7612f905d6f9",
-    "approval": "Neither directory has approved the plugin."
+    "approval": "Neither directory has approved the plugin.",
+    "claudeConnectorUrl": "https://claude.ai/directory/manage/fusionmetrics"
   }
 }
