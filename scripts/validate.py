@@ -169,6 +169,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     try:
         plugin, manifest, pending = validate(submission_ready=args.submission_ready)
-        print(f"Package valid: {manifest['name']} {manifest['version']}. {len(pending)} live submission gates pending. Nothing submitted.")
+        print(f"Package valid: {manifest['name']} {manifest['version']}. {len(pending)} live coverage gates pending. This command does not submit or publish.")
     except (ValueError, KeyError, OSError) as error:
         parser.exit(1, f"Validation failed: {error}\n")
